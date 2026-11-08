@@ -37,8 +37,9 @@ check("button label", "#ffffff", t.accent, 4.5);
 check("button label, hover", "#ffffff", t["accent-press"], 4.5);
 check("marked control in a drawing", t["accent-press"], t.tint, 4.5);
 check("step number", t.bg, t.ink, 4.5);
-check("landing text", t.ink, t.sky, 4.5);
-check("landing quiet text", t.muted, t.sky, 4.5);
+check("landing text", t.moon, t.night, 4.5);
+check("landing quiet text", t["moon-muted"], t.night, 4.5);
+check("landing button", "#ffffff", t.electric, 4.5);
 
 if (failed) process.exit(1);
 console.log("contrast: every pair passes");

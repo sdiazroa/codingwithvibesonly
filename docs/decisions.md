@@ -2,7 +2,9 @@
 
 What's true now, and why. Newest first. A reversed decision gets deleted; git has the history.
 
-- **2026-11-08** The landing is one light full page with a blue horizon, centered type, one line and one button. The whole site uses the blue palette. *Why:* Silvia's call: cleaner, not so dark, blue tones instead of orange.
+- **2026-11-08** The course has two paths in order: build a habit tracker together, then build your own app with the full process. *Why:* Silvia's call: people learn the loop on something concrete, and then think harder on their own idea. Other beginner courses also build a specific project.
+- **2026-11-08** The landing is dark blue with an arc that moves: light travels along it, its glow breathes, and a cursor blinks. The lessons stay light for reading. *Why:* Silvia's call: clean, with movement, and dark reads as more vibey and engineer coded. Blue tones, not orange.
+- **2026-11-08** The favicon is a prompt and cursor, `>_`. *Why:* that's what you type into when you vibe code.
 - **2026-11-08** Testing and the audit come before launch. *Why:* a review of other beginner courses (LinkedIn Learning, DeepLearning.AI, DataCamp) showed they all review before going live, and we had it after.
 - **2026-11-08** Removed the "Why the blueprint comes first" lesson and the house drawing. Its one idea is now two sentences at the start of the Product stage. *Why:* Silvia's review: the page was unnecessary and the visual too big.
 - **2026-11-08** The author credit, "By Silvia Diaz-Roa," links to her LinkedIn from the landing page and the bottom of the navigation.

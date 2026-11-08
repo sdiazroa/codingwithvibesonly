@@ -1,4 +1,4 @@
-/* One full screen, no scrolling, at any size. A blue horizon on a light page. */
+/* One full screen, no scrolling, at any size. Dark, with light moving along one arc. */
 .landing {
   position: relative;
   height: 100dvh;
@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--sky);
-  color: var(--ink);
+  background: var(--night);
+  color: var(--moon);
   text-align: center;
 }
 
@@ -27,18 +27,52 @@
   aspect-ratio: 1;
   border-radius: 50%;
   transform: translateX(-50%);
-  background: var(--sky);
+  background: var(--night);
+  box-shadow: 0 -1px 2px var(--ice);
+  animation: rise 1600ms ease-out backwards;
+}
+
+/* The glow breathes */
+.horizon i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
   box-shadow:
-    0 -1px 2px var(--accent),
-    0 -6px 28px rgb(31 79 209 / 0.45),
-    0 -24px 110px rgb(31 79 209 / 0.28);
-  animation: rise 1400ms ease-out backwards;
+    0 -6px 34px var(--electric),
+    0 -26px 120px rgb(47 98 238 / 0.5),
+    inset 0 10px 44px rgb(47 98 238 / 0.28);
+  animation: breathe 7s ease-in-out infinite;
+}
+
+/* A point of light travels along the rim */
+.horizon i::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 78%, var(--ice) 92%, #ffffff 96%, transparent 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  animation: travel 9s linear infinite;
 }
 
 @keyframes rise {
   from {
     opacity: 0;
     transform: translate(-50%, 56px);
+  }
+}
+
+@keyframes breathe {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes travel {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -63,11 +97,26 @@
   text-transform: uppercase;
 }
 
+/* An engineer's cursor */
+.landing h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.09em;
+  margin-left: 0.1em;
+  background: var(--ice);
+  animation: blink 1.2s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .landing-main p {
   margin-top: 20px;
-  max-width: 34em;
-  text-wrap: balance;
-  color: var(--muted);
+  color: var(--moon-muted);
   font-size: var(--body);
 }
 
@@ -75,15 +124,36 @@
   margin-top: 32px;
   min-height: 56px;
   padding: 14px 34px;
+  background: var(--electric);
+}
+
+.btn-start:hover {
+  background: var(--accent);
+}
+
+.btn-start:focus-visible,
+.landing .continue:focus-visible,
+.landing .author:focus-visible {
+  outline-color: var(--ice);
 }
 
 .landing .continue {
   margin-top: 8px;
+  color: var(--moon-muted);
+}
+
+.landing .continue:hover {
+  color: var(--moon);
 }
 
 .landing > .author {
   flex: none;
   margin-bottom: 16px;
+  color: var(--moon-muted);
+}
+
+.landing > .author:hover {
+  color: var(--moon);
 }
 
 @media (max-width: 640px) {
@@ -122,6 +192,7 @@
     padding: 8px 24px;
   }
   .landing > .author {
-    display: none;
+    margin-bottom: 0;
+    padding: 4px 0;
   }
 }

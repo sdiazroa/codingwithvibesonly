@@ -10,6 +10,7 @@ AI makes it easy to start building and easy to build the wrong thing. Beginners 
 A live app, a blueprint behind it, and habits that keep it healthy. They understand what they're building before they build it, and they can direct an AI like a product manager, a designer and an architect.
 
 ## How it teaches
+- First, build a habit tracker together, to learn the loop on something concrete. Then do it for real with your own idea.
 - The order is the lesson: product, design and architecture come before the build.
 - Few words, and one-click copy for anything to paste.
 - Nothing is locked. Start anywhere.
@@ -22,4 +23,4 @@ Landing, a lesson, All prompts.
 Quizzes, final exams, streaks, accounts.
 
 ## Later
-Screenshots of Claude Code in the setup lessons. A worked example that follows one app through the whole course. Other languages.
+Screenshots of Claude Code in the setup lessons. Other languages.

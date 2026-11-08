@@ -45,6 +45,16 @@
   margin-top: 12px;
 }
 
+/* What the student should see */
+.result {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
 /* Mac or Windows */
 .os {
   counter-reset: none;

@@ -79,6 +79,9 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       );
     case "mock":
       return <Mock show={block.show} />;
+    case "image":
+      // eslint-disable-next-line @next/next/no-img-element
+      return <img className="result" src={block.src} alt={block.alt} />;
     case "link":
       return (
         <a className="btn btn-primary" href={block.href} target="_blank" rel="noreferrer">

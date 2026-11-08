@@ -17,7 +17,7 @@ function Sidebar({ hit }: { hit?: "code" | "new" }) {
   );
 }
 
-function PromptBox({ hit, menu, folder = "my-first-app", mode = "Plan" }: { hit?: "plus" | "env" | "folder" | "mode"; menu?: ReactNode; folder?: string; mode?: string }) {
+function PromptBox({ hit, menu, folder = "habit-tracker", mode = "Plan" }: { hit?: "plus" | "env" | "folder" | "mode"; menu?: ReactNode; folder?: string; mode?: string }) {
   return (
     <div className="m-prompt">
       <div className="m-input">

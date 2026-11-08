@@ -1,7 +1,10 @@
+import type { Viewport } from "next";
 import Link from "next/link";
 import { Author } from "@/components/Author";
 import { ContinueLink } from "@/components/Continue";
 import { firstLesson, lessons } from "@/lib/course";
+
+export const viewport: Viewport = { themeColor: "#0a0f1f" };
 
 // Job: welcome people and send them into the first lesson. One action, one screen, no scrolling.
 export default function Home() {

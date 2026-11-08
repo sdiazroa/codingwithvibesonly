@@ -17,15 +17,15 @@
 Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly.
 
 ## The system
-- **Color:** paper, white for prompts and drawings, dark blue ink, one quiet gray, one blue for action. The landing is one pale blue with a thin blue arc.
+- **Color:** paper, white for prompts and drawings, dark blue ink, one quiet gray, one blue for action. The landing is dark blue with an electric arc. Lessons stay light for reading.
 - **Type:** Source Serif 4 for lesson headings, Inter for everything else, monospace for text to copy. Sizes: 15, 17, 20 and 40. The landing headline and the 13px text inside drawings are the exceptions.
 - **Components:** one button, one quiet text link, step, drawing, Mac or Windows switch, prompt, flow, compare, rows, checklist, pop-up.
-- **Motion:** only the landing horizon. The page is complete without it.
+- **Motion:** only the landing: the arc rises, light travels along it, its glow breathes, and a cursor blinks. All of it stops for people who ask for less motion, and the page is complete without it.
 
 ## Screens
-- **Landing:** one light full page, no split, no scrolling at any size. Blue horizon, headline, one short line, one button, and the author credit.
+- **Landing:** one light full page, no split, no scrolling at any size. Moving blue arc, headline, one short line, one button, and the author credit.
 - **Lesson:** title, then the walkthrough, then Next. Nothing above the title.
-- **Sidebar:** stages, with only the current stage's lessons open, and the author credit at the very bottom. Phones get the same list behind Menu.
+- **Sidebar:** stages, with only the current stage's lessons open, a label where the student's own app begins, and the author credit at the very bottom. Phones get the same list behind Menu.
 - **All prompts:** the prompts, grouped by stage.
 
 ## Drawings

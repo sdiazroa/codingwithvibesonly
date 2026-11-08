@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Author } from "@/components/Author";
 import { useProgress } from "@/lib/progress";
 
-export type NavPart = { slug: string; title: string; lessons: { slug: string; title: string }[] };
+export type NavPart = { slug: string; title: string; group?: string; lessons: { slug: string; title: string }[] };
 
 // Every stage, with only the current stage's lessons open.
 function Tree({ parts, path, onNavigate }: { parts: NavPart[]; path: string; onNavigate?: () => void }) {
@@ -17,6 +17,7 @@ function Tree({ parts, path, onNavigate }: { parts: NavPart[]; path: string; onN
           const open = part.lessons.some((l) => path === `/lessons/${l.slug}`);
           return (
             <li key={part.slug}>
+              {part.group ? <span className="tree-group">{part.group}</span> : null}
               <Link href={`/lessons/${part.lessons[0].slug}`} onClick={onNavigate} className={open ? "tree-stage open" : "tree-stage"}>
                 {part.title}
               </Link>

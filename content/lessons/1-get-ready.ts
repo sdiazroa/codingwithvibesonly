@@ -31,20 +31,20 @@ export const getReady: Part = {
       title: "Create your project folder",
       description: "Every project lives in its own folder on your computer.",
       blocks: [
-        { type: "p", text: "Everything you build lives in one folder on your computer." },
+        { type: "p", text: "Each app you build lives in its own folder on your computer. Your first one will be a habit tracker." },
         {
           type: "os",
           mac: [
             { type: "step", text: "Click the **Finder** icon (the blue smiling face) in your Dock." },
             { type: "step", text: "Click **Documents** in the left sidebar." },
             { type: "step", text: "Right-click an empty spot in the window (or tap with two fingers), and choose **New Folder**.", then: [{ type: "mock", show: "folder-mac" }] },
-            { type: "step", text: "Type `my-first-app` as the name and press **Return**." },
+            { type: "step", text: "Type `habit-tracker` as the name and press **Return**." },
           ],
           windows: [
             { type: "step", text: "Press the **Windows** key and **E** together to open File Explorer." },
             { type: "step", text: "Click **Documents** in the left sidebar." },
             { type: "step", text: "Right-click an empty spot in the window, then choose **New** and **Folder**.", then: [{ type: "mock", show: "folder-windows" }] },
-            { type: "step", text: "Type `my-first-app` as the name and press **Enter**." },
+            { type: "step", text: "Type `habit-tracker` as the name and press **Enter**." },
           ],
         },
       ],
@@ -56,13 +56,13 @@ export const getReady: Part = {
       blocks: [
         { type: "step", text: "In the Claude app, click **Code** in the sidebar. If you only see icons, hover over them to see their names.", then: [{ type: "mock", show: "code-tab" }] },
         { type: "step", text: "Look at the row under the prompt box. Click the first menu and choose the top option under **Local**.", then: [{ type: "mock", show: "local" }] },
-        { type: "step", text: "Click the folder menu beside it and choose **Open folder…** Then find `my-first-app` in Documents and open it.", then: [{ type: "mock", show: "open-folder" }] },
+        { type: "step", text: "Click the folder menu beside it and choose **Open folder…** Then find `habit-tracker` in Documents and open it.", then: [{ type: "mock", show: "open-folder" }] },
         {
           type: "step",
           text: "Click **Copy**, paste into the prompt box and press Enter.",
           then: [{ type: "prompt", id: "first-hello", title: "Your first prompt", text: "Say hello, and tell me which folder you're working in. Don't change anything." }],
         },
-        { type: "step", text: "Claude should reply with `my-first-app`. If it does, you're set up." },
+        { type: "step", text: "Claude should reply with `habit-tracker`. If it does, you're set up." },
       ],
     },
     {

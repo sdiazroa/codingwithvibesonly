@@ -4,19 +4,21 @@ import type { Part } from "@/lib/types";
 export const product: Part = {
   slug: "product",
   title: "Product",
+  group: "Your own app",
   lessons: [
     {
       slug: "define-the-problem",
       title: "Define the problem",
       description: "A good app starts with a specific person and a specific problem.",
       blocks: [
-        { type: "p", text: "Before anything gets built, Claude will interview you and write three short documents: product, design and architecture. Moving a wall on paper is free. Moving it later is a project." },
-        { type: "p", text: "Start with the product. Good products start with a person who has a problem." },
+        { type: "p", text: "Now your own idea. This time, Claude interviews you before anything gets built, and writes three short documents: product, design and architecture. Moving a wall on paper is free. Moving it later is a project." },
+        { type: "p", text: "Good products start with a person who has a problem." },
         {
           type: "compare",
           left: { title: "Vague", items: ["A fitness app for everyone"] },
           right: { title: "Clear", items: ["Tells runners coming back from injury how far to run this week"] },
         },
+        { type: "step", text: "Create a new folder for your app, the same way you did for the habit tracker. In the Claude app, open it from the folder menu under the prompt box." },
         newPlanSession(),
         pastePrompt({
           type: "prompt",

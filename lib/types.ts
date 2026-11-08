@@ -23,6 +23,7 @@ export type Block =
   | { type: "os"; mac: Block[]; windows: Block[] } // steps that differ by computer
   | { type: "mock"; show: MockName } // a drawing of where to click
   | { type: "link"; label: string; href: string }
+  | { type: "image"; src: string; alt: string } // what the student should see
   | { type: "prompt"; id: string; title: string; mode?: Mode; text: string }
   | { type: "command"; label: string; text: string }
   | { type: "flow"; items: string[] }
@@ -44,5 +45,6 @@ export type Lesson = {
 export type Part = {
   slug: string;
   title: string;
+  group?: string; // a label shown above this stage in the navigation
   lessons: Lesson[];
 };

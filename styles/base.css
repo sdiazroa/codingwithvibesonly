@@ -8,7 +8,11 @@
   --accent: #1f4fd1;
   --accent-press: #173da6;
   --tint: #e9eefc;
-  --sky: #eef3ff;
+  --night: #0a0f1f;
+  --moon: #eef2ff;
+  --moon-muted: #a7b3d1;
+  --electric: #2f62ee;
+  --ice: #8fb0ff;
 
   --sans: var(--font-sans), system-ui, sans-serif;
   --serif: var(--font-serif), Georgia, serif;

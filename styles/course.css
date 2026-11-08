@@ -73,6 +73,16 @@
   font-weight: 600;
 }
 
+.tree-group {
+  display: block;
+  margin: 16px 0 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .tree-prompts {
   margin-top: 16px;
 }

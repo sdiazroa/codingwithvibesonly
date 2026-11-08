@@ -22,10 +22,13 @@ Each stage is one file in `content/lessons/`. `tests/content.test.ts` enforces t
 
 ## Prompts
 - Anything to copy is a `prompt` or `command`, so it always has a copy button.
-- Prompts before the Build stage never build the app. They interview the student and leave a document behind.
+- In the Your own app stages, prompts before Build never build the app. They interview the student and leave a document behind.
 - Ask Claude to ask one question at a time and use plain language.
 - Fill-ins are in `[CAPITAL BRACKETS]`. Use them only when Claude can't ask instead.
 - A prompt has one home, its lesson. All prompts is built from them.
+
+## The habit tracker
+Its prompts are specific and don't interview the student, so everyone gets a working app. If you change one, test the result again.
 
 ## Keep it true
 Check every button name, command and plan against the [Claude Code docs](https://code.claude.com/docs/en/overview). If the docs don't name a label, describe it instead of guessing.
