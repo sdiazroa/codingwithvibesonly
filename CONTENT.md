@@ -1,11 +1,18 @@
 # Writing a lesson
 
-Each stage is one file in `content/lessons/`. `tests/content.test.ts` enforces the limits below. Tighten them; don't raise them.
+Each stage is one file in `content/lessons/`. `tests/content.test.ts` enforces the limits below.
 
 ## Every lesson
-- One idea, in 80 words or fewer. Start with the fewest words that work.
-- At most one prompt, one visual and one pop-up. Use none if the lesson works without them.
+- One idea, with 60 words of explanation or fewer. Then the walkthrough.
+- At most 8 steps, one prompt, one diagram and one pop-up.
 - Before adding anything, ask: would the reader miss it?
+
+## Steps
+- One action per step, under 40 words. Name the exact control, what to type and what they'll see.
+- Assume nothing. Someone may never have made a folder.
+- Show where to click with a `mock` whenever it helps. One per step.
+- Use an `os` block when Mac and Windows differ.
+- Working with Claude uses the steps in `content/patterns.ts`. Don't reword them lesson by lesson.
 
 ## Words
 - Plain words first. Say why before how.
@@ -21,7 +28,7 @@ Each stage is one file in `content/lessons/`. `tests/content.test.ts` enforces t
 - A prompt has one home, its lesson. All prompts is built from them.
 
 ## Keep it true
-When a lesson names a button, command or plan, check it against the [Claude Code docs](https://code.claude.com/docs/en/overview).
+Check every button name, command and plan against the [Claude Code docs](https://code.claude.com/docs/en/overview). If the docs don't name a label, describe it instead of guessing.
 
 ## Not in this course
 Quizzes, exams, streaks, recaps.

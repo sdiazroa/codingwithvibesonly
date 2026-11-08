@@ -3,9 +3,26 @@
 
 export type Mode = "Plan" | "Manual";
 
+export type MockName =
+  | "install-mac"
+  | "install-windows"
+  | "folder-mac"
+  | "folder-windows"
+  | "code-tab"
+  | "local"
+  | "open-folder"
+  | "mode"
+  | "new-session"
+  | "file-link"
+  | "attach"
+  | "browser";
+
 export type Block =
   | { type: "p"; text: string }
-  | { type: "steps"; items: string[] }
+  | { type: "step"; text: string; then?: Block[] } // one action; steps number themselves
+  | { type: "os"; mac: Block[]; windows: Block[] } // steps that differ by computer
+  | { type: "mock"; show: MockName } // a drawing of where to click
+  | { type: "link"; label: string; href: string }
   | { type: "prompt"; id: string; title: string; mode?: Mode; text: string }
   | { type: "command"; label: string; text: string }
   | { type: "flow"; items: string[] }

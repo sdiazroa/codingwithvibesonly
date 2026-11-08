@@ -1,3 +1,4 @@
+import { answerQuestions, approve, newPlanSession, pastePrompt, readFile } from "@/content/patterns";
 import type { Part } from "@/lib/types";
 
 export const architecture: Part = {
@@ -29,7 +30,8 @@ export const architecture: Part = {
       description: "Your goals decide the architecture. Ask for the simplest one that meets them.",
       blocks: [
         { type: "p", text: "Your goals decide what you need. Every extra part adds cost and something else that can break, so ask for the simplest setup that works." },
-        {
+        newPlanSession(),
+        pastePrompt({
           type: "prompt",
           id: "architecture",
           title: "Choose the architecture",
@@ -39,7 +41,10 @@ export const architecture: Part = {
 Recommend the simplest architecture that meets these goals, using popular tools. Include a simple diagram, the monthly cost now and at 1,000 users, how people's data stays safe, and what would change if we grew 100 times.
 
 Then challenge your own recommendation: what's most likely to cause pain in six months? Don't write any app code. Save this as docs/architecture.md.`,
-        },
+        }),
+        answerQuestions,
+        approve("Claude creates the document."),
+        readFile("docs/architecture.md"),
       ],
     },
     {
@@ -48,7 +53,8 @@ Then challenge your own recommendation: what's most likely to cause pain in six 
       description: "Give Claude its house rules and a step-by-step plan, then check that you're ready to build.",
       blocks: [
         { type: "p", text: "Claude starts every session fresh. `CLAUDE.md` is how it remembers your project, and a plan breaks the build into milestones." },
-        {
+        newPlanSession(),
+        pastePrompt({
           type: "prompt",
           id: "rulebook",
           title: "Write the rules and the plan",
@@ -64,8 +70,9 @@ Create a short CLAUDE.md that says what this app is, points to each file in docs
 - when a decision changes, update the docs
 
 Then break Version 1 into 3 to 6 small milestones I can see and test, in docs/plan.md.`,
-        },
-        { type: "p", text: "Before you build, can you say yes to all of these?" },
+        }),
+        approve("Claude creates both files."),
+        { type: "step", text: "Before you build, make sure you can check all of these:" },
         {
           type: "checklist",
           id: "blueprint-check",

@@ -1,13 +1,18 @@
 /* Every color is a token. tests/contrast.test.ts checks every pair. */
 :root {
-  --bg: #f8f6f0;
+  --bg: #f9f6f1;
   --card: #ffffff;
-  --ink: #172033;
-  --muted: #545d72;
-  --line: #e2dfd5;
-  --accent: #1f4fd1;
-  --accent-press: #173da6;
-  --blueprint: #17389c;
+  --ink: #1f1a17;
+  --muted: #5f574f;
+  --line: #e6dfd5;
+  --accent: #b4431c;
+  --accent-press: #8f3414;
+  --tint: #fbeee6;
+  --night: #15100e;
+  --paper-ink: #f6efe6;
+  --paper-muted: #b9aea3;
+  --glow: #ff8a4c;
+  --dawn: #ffc46b;
 
   --sans: var(--font-sans), system-ui, sans-serif;
   --serif: var(--font-serif), Georgia, serif;
@@ -130,12 +135,6 @@ code {
 
 .btn-primary:active {
   transform: translateY(1px);
-}
-
-.btn-large {
-  min-height: 56px;
-  padding: 14px 32px;
-  font-size: var(--h2);
 }
 
 /* The one quiet control */

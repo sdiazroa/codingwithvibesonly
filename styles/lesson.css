@@ -3,6 +3,10 @@
   max-width: 680px;
 }
 
+.lesson {
+  counter-reset: step;
+}
+
 .lesson > h1 {
   margin-bottom: 32px;
 }
@@ -11,6 +15,72 @@
 .dive-body > * {
   margin-top: 0;
   margin-bottom: 24px;
+}
+
+/* One action */
+.step {
+  position: relative;
+  counter-increment: step;
+  padding-left: 40px;
+}
+
+.step::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: var(--small);
+  font-weight: 600;
+}
+
+.step > .prompt,
+.step > .btn {
+  margin-top: 12px;
+}
+
+/* Mac or Windows */
+.os {
+  counter-reset: none;
+}
+
+.os > div[hidden] {
+  display: none;
+}
+
+.os > div:not(.os-tabs) > * + * {
+  margin-top: 24px;
+}
+
+.os-tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 3px;
+  background: var(--line);
+  border-radius: 8px;
+}
+
+.os-tabs button {
+  min-height: 36px;
+  padding: 4px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  font: 500 var(--small) / 1.2 var(--sans);
+  cursor: pointer;
+}
+
+.os-tabs button[aria-pressed="true"] {
+  background: var(--card);
+  color: var(--ink);
 }
 
 /* Text to copy */
@@ -48,15 +118,6 @@
 .copy {
   min-width: 84px;
   font-size: var(--small);
-}
-
-/* Numbered steps */
-.steps {
-  padding-left: 22px;
-}
-
-.steps li + li {
-  margin-top: 8px;
 }
 
 /* A sequence */
@@ -126,6 +187,48 @@
 .house-fig {
   padding: 24px;
   border-radius: var(--radius);
+  background: var(--night);
+  color: var(--paper-ink);
+}
+
+.house {
+  display: block;
+  width: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.house .thin {
+  stroke-width: 1.5;
+}
+
+.house .base {
+  fill: var(--glow);
+  fill-opacity: 0.35;
+  stroke: var(--glow);
+}
+
+.house .wire {
+  stroke: var(--dawn);
+  stroke-width: 2;
+  stroke-dasharray: 2 7;
+}
+
+.house-labels path {
+  stroke-width: 1;
+}
+
+.house-labels .leader {
+  stroke-dasharray: 2 4;
+}
+
+.house-labels text {
+  fill: currentColor;
+  stroke: none;
+  font: 500 20px var(--sans);
 }
 
 .house-fig .house {

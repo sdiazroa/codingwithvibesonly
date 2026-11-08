@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { Checklist } from "@/components/Checklist";
 import { Dive } from "@/components/Dive";
 import { House } from "@/components/House";
+import { Mock } from "@/components/Mock";
+import { OsTabs } from "@/components/OsTabs";
 import { Prompt } from "@/components/Prompt";
 import { Term } from "@/components/Term";
 import type { Block, Word } from "@/lib/types";
@@ -56,15 +58,33 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
           <Inline text={block.text} ctx={ctx} />
         </p>
       );
-    case "steps":
+    case "step":
       return (
-        <ol className="steps">
-          {block.items.map((s) => (
-            <li key={s}>
-              <Inline text={s} ctx={ctx} />
-            </li>
+        <div className="step">
+          <p>
+            <Inline text={block.text} ctx={ctx} />
+          </p>
+          {block.then?.map((b, i) => <BlockView key={i} block={b} ctx={ctx} />)}
+        </div>
+      );
+    case "os":
+      return (
+        <OsTabs
+          mac={block.mac.map((b, i) => (
+            <BlockView key={i} block={b} ctx={ctx} />
           ))}
-        </ol>
+          windows={block.windows.map((b, i) => (
+            <BlockView key={i} block={b} ctx={ctx} />
+          ))}
+        />
+      );
+    case "mock":
+      return <Mock show={block.show} />;
+    case "link":
+      return (
+        <a className="btn btn-primary" href={block.href} target="_blank" rel="noreferrer">
+          {block.label}
+        </a>
       );
     case "prompt":
       return <Prompt label={block.mode ? `${block.mode} mode` : undefined} text={block.text} />;

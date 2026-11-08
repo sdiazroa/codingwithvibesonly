@@ -1,3 +1,4 @@
+import { answerQuestions, approve, newPlanSession, pastePrompt, readFile } from "@/content/patterns";
 import type { Part } from "@/lib/types";
 
 export const product: Part = {
@@ -12,7 +13,7 @@ export const product: Part = {
         { type: "p", text: "Nobody builds a house by laying bricks and seeing what happens. Moving a wall on paper is free. Moving it later is a project." },
         { type: "house" },
         { type: "p", text: "Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly." },
-        { type: "p", text: "You'll plan all three with Claude in a few short documents. **No building until the blueprint is done.**" },
+        { type: "p", text: "Next, Claude will interview you and write three short documents: `product.md`, `design.md` and `architecture.md`. **No building until they're done.**" },
       ],
     },
     {
@@ -26,8 +27,8 @@ export const product: Part = {
           left: { title: "Vague", items: ["A fitness app for everyone"] },
           right: { title: "Clear", items: ["Tells runners coming back from injury how far to run this week"] },
         },
-        { type: "p", text: "Let Claude interview you. Short answers are fine." },
-        {
+        newPlanSession(),
+        pastePrompt({
           type: "prompt",
           id: "product-interview",
           title: "The product interview",
@@ -38,6 +39,13 @@ export const product: Part = {
 - what success looks like three months after launch
 
 Push back if I'm vague. Don't write any code. When we're done, save a one-page summary as docs/product.md.`,
+        }),
+        answerQuestions,
+        approve("Claude creates the document. If it asks permission to create a file, allow it."),
+        {
+          type: "step",
+          text: "Click `docs/product.md` in the chat to read it. If something's wrong, tell Claude what to change.",
+          then: [{ type: "mock", show: "file-link" }],
         },
         {
           type: "dive",
@@ -61,7 +69,8 @@ Push back if I'm vague. Don't write any code. When we're done, save a one-page s
       description: "Version 1 should do one job well. Everything else can wait.",
       blocks: [
         { type: "p", text: "Every feature is something to design, build and fix forever. Start with the smallest version that solves the problem. Real users will tell you what comes next." },
-        {
+        newPlanSession(),
+        pastePrompt({
           type: "prompt",
           id: "scope",
           title: "Cut the scope",
@@ -69,7 +78,10 @@ Push back if I'm vague. Don't write any code. When we're done, save a one-page s
           text: `Read docs/product.md. List every feature this app could have, and sort them into Version 1, Later and Not doing.
 
 Version 1 is the smallest version that solves the core problem for one kind of person. For anything I want to keep in it, ask what breaks if we leave it out. Add the lists to docs/product.md.`,
-        },
+        }),
+        answerQuestions,
+        approve("Claude adds the lists to your document."),
+        readFile("docs/product.md"),
       ],
     },
   ],

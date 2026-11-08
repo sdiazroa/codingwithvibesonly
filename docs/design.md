@@ -1,33 +1,39 @@
 # Design
 
 ## The rule
-**Every word, button and visual earns its place, or it goes.** Clean is the goal. Passing an automated check doesn't mean a screen is clean. Ask: would the reader miss this?
+**Every word, button and visual earns its place, or it goes. But clean is not vague: a beginner should never have to guess what to do next.** Cut decoration and repetition. Never cut a needed step.
 
 ## Principles
-1. **One idea per screen.** A lesson teaches one thing, with at most one prompt and one visual.
-2. **One clear action.** Copy the prompt, then Next.
-3. **Say it once.** No summary of what the page just said. No label for what's already obvious.
-4. **Space before lines, lines before boxes.** The only box in a lesson is a prompt, because that's what the student acts on.
-5. **Consistent everywhere.** The same thing always looks the same. Use the tokens and components below, and don't add new ones without removing something.
-6. **A visual has to be true.** If a diagram's logic is off, fix it or cut it.
+1. **One action per step.** Say where to click, what to type and what they'll see next.
+2. **Show where to click.** A drawing with the one control marked beats a sentence about it.
+3. **One clear next step.** Each screen has one main action.
+4. **The same steps every time.** Working with Claude follows one pattern (`content/patterns.ts`), so it becomes second nature.
+5. **Say it once.** No summary of what the page just said.
+6. **Space before lines, lines before boxes.** Only a prompt or a drawing gets a box.
+7. **Consistent everywhere.** The same thing always looks the same. Don't add a new component without removing one.
+8. **A visual has to be true.** If its logic is off, fix it or cut it.
 
 ## How the course sees it
-Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly. Any visual of these should say that.
+Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly.
 
 ## The system
-- **Color:** paper, white for prompts, ink, one quiet gray, one blue for action. Deep blue only for the blueprint drawing.
-- **Type:** Source Serif 4 for headings, Inter for everything else, monospace for text to copy. Four sizes: 15, 17, 20 and 40. The landing headline is the one exception.
-- **Components:** one button, one quiet text control, prompt, flow, compare, rows, the house, checklist, pop-up.
-- **Motion:** only the landing drawing. It's complete without the animation.
+- **Color:** a warm sunrise. Night and glow on the landing, paper and ink in the lessons, one burnt orange for action.
+- **Type:** Source Serif 4 for lesson headings, Inter for everything else, monospace for text to copy. Sizes: 15, 17, 20 and 40. The landing headline and the 13px text inside drawings are the exceptions.
+- **Components:** one button, one quiet text link, step, drawing, Mac or Windows switch, prompt, flow, compare, rows, the house, checklist, pop-up.
+- **Motion:** only the landing horizon. The page is complete without it.
 
 ## Screens
-- **Landing:** one screen, no scrolling, at any size. Headline, one line, one button. Returning students also get a quiet continue link.
-- **Lesson:** title, content, Next. Nothing above the title.
-- **Sidebar:** stages, with only the current stage's lessons open. Dots show progress. Phones get the same list behind Menu.
+- **Landing:** one full page, no split, no scrolling at any size. Glowing horizon, headline, one line, one button.
+- **Lesson:** title, then the walkthrough, then Next. Nothing above the title.
+- **Sidebar:** stages, with only the current stage's lessons open. Phones get the same list behind Menu.
 - **All prompts:** the prompts, grouped by stage.
 
+## Drawings
+`components/Mock.tsx` draws where to click, marking the control with `.hit`. They're simplified on purpose. Names come from the [Claude Code docs](https://code.claude.com/docs/en/desktop). When the app changes, update them.
+
 ## Review before showing anyone
-1. Say the screen's job in one sentence, then look at each element and ask whether it helps that job. Remove what doesn't.
-2. Look at it at 1440px and 375px, in screenshots.
-3. Compare it to the principles above. Say honestly where it falls short.
-4. Copy `tools/ui-audit.js` to `public/__audit.js`, serve the production build, add it to the page with a script tag and run `window.__audit()`. Delete the copy afterward. Tap targets on phones are at least 40px.
+1. Follow the lesson as someone who has never done this. Is any step a guess?
+2. Say the screen's job, then ask whether each element helps it. Remove what doesn't.
+3. Look at it at 1440px and 375px, in screenshots.
+4. Compare it to the principles above. Say honestly where it falls short.
+5. Copy `tools/ui-audit.js` to `public/__audit.js`, serve the production build, add it to the page with a script tag and run `window.__audit()`. Delete the copy afterward. Tap targets on phones are at least 40px.

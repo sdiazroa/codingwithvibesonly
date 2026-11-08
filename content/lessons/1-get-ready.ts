@@ -1,70 +1,79 @@
 import type { Part } from "@/lib/types";
 
 export const getReady: Part = {
-  slug: "get-ready",
-  title: "Get ready",
+  slug: "get-set-up",
+  title: "Get set up",
   lessons: [
     {
-      slug: "what-vibe-coding-is",
-      title: "What vibe coding is",
-      description: "You describe what you want and AI writes the code. Deciding what to build stays with you.",
+      slug: "download-claude",
+      title: "Download Claude",
+      description: "The first step in vibe coding: install the Claude desktop app.",
       blocks: [
-        { type: "p", text: "Vibe coding means building software by describing it in plain language. An AI tool called Claude Code writes the code." },
+        { type: "p", text: "Vibe coding means building software by describing it in plain language. Claude Code is the AI that writes the code, and it comes inside the Claude desktop app." },
+        { type: "step", text: "Download the app. Claude Code needs a [paid plan](https://claude.com/pricing) (Pro or higher).", then: [{ type: "link", label: "Go to the download page", href: "https://claude.com/download" }] },
         {
-          type: "compare",
-          left: { title: "Claude", items: ["Writes the code", "Fixes what breaks", "Suggests options"] },
-          right: { title: "You", items: ["Decide what to build", "Choose between options", "Judge whether it's right"] },
+          type: "os",
+          mac: [
+            { type: "step", text: "Open your **Downloads** folder and double-click the Claude file. A window opens.", then: [] },
+            { type: "step", text: "Drag the **Claude** icon onto **Applications**.", then: [{ type: "mock", show: "install-mac" }] },
+            { type: "step", text: "Open **Applications** and double-click **Claude**. If your Mac asks whether you're sure, click **Open**." },
+          ],
+          windows: [
+            { type: "step", text: "Open your **Downloads** folder and double-click the Claude setup file.", then: [{ type: "mock", show: "install-windows" }] },
+            { type: "step", text: "Follow the prompts until it finishes. If Claude doesn't open by itself, find it in the **Start** menu." },
+          ],
         },
-        { type: "p", text: "Claude builds the wrong thing as fast as the right thing. So this course plans first and builds second." },
+        { type: "step", text: "Sign in with your Claude account, or create one." },
       ],
     },
     {
-      slug: "set-up-claude-code",
-      title: "Set up Claude Code",
-      description: "Install one app and you're ready to start.",
+      slug: "create-your-project-folder",
+      title: "Create your project folder",
+      description: "Every project lives in its own folder on your computer.",
       blocks: [
+        { type: "p", text: "Everything you build lives in one folder on your computer." },
         {
-          type: "steps",
-          items: [
-            "[Download the Claude app](https://claude.com/download) and sign in. You'll need a [paid plan](https://claude.com/pricing).",
-            "Open the **Code** tab.",
-            "Create an empty folder for your project.",
-            "Under the prompt box, choose the top option under **Local**, then **Open folder…**, and pick your folder.",
-            "Paste this prompt and press Enter:",
+          type: "os",
+          mac: [
+            { type: "step", text: "Click the **Finder** icon (the blue smiling face) in your Dock." },
+            { type: "step", text: "Click **Documents** in the left sidebar." },
+            { type: "step", text: "Right-click an empty spot in the window (or tap with two fingers), and choose **New Folder**.", then: [{ type: "mock", show: "folder-mac" }] },
+            { type: "step", text: "Type `my-first-app` as the name and press **Return**." },
           ],
-        },
-        {
-          type: "prompt",
-          id: "first-hello",
-          title: "Your first prompt",
-          text: "Say hello, and tell me which folder you're working in. Don't change anything.",
-        },
-        {
-          type: "dive",
-          title: "Prefer the terminal?",
-          blocks: [
-            { type: "command", label: "Mac or Linux", text: "curl -fsSL https://claude.ai/install.sh | bash" },
-            { type: "command", label: "Windows PowerShell", text: "irm https://claude.ai/install.ps1 | iex" },
-            { type: "p", text: "Open a new terminal window, go to your project folder and type `claude`. Press Shift+Tab to change modes. The [setup guide](https://code.claude.com/docs/en/quickstart) can help if you get stuck." },
+          windows: [
+            { type: "step", text: "Press the **Windows** key and **E** together to open File Explorer." },
+            { type: "step", text: "Click **Documents** in the left sidebar." },
+            { type: "step", text: "Right-click an empty spot in the window, then choose **New** and **Folder**.", then: [{ type: "mock", show: "folder-windows" }] },
+            { type: "step", text: "Type `my-first-app` as the name and press **Enter**." },
           ],
         },
       ],
     },
     {
-      slug: "stay-in-control-with-modes",
-      title: "Stay in control with modes",
-      description: "Modes set how much Claude can do without asking you.",
+      slug: "open-your-folder-in-claude",
+      title: "Open your folder in Claude",
+      description: "Point Claude Code at your project folder and say hello.",
       blocks: [
-        { type: "p", text: "Modes set how much Claude can do without asking. The menu is under the prompt box." },
+        { type: "step", text: "In the Claude app, click **Code** in the sidebar. If you only see icons, hover over them to see their names.", then: [{ type: "mock", show: "code-tab" }] },
+        { type: "step", text: "Look at the row under the prompt box. Click the first menu and choose the top option under **Local**.", then: [{ type: "mock", show: "local" }] },
+        { type: "step", text: "Click the folder menu beside it and choose **Open folder…** Then find `my-first-app` in Documents and open it.", then: [{ type: "mock", show: "open-folder" }] },
         {
-          type: "rows",
-          items: [
-            { title: "Plan", note: "Proposes a plan and waits for your approval." },
-            { title: "Manual", note: "Asks before each change." },
-            { title: "Accept edits", note: "Changes files without asking. Use it once you trust the plan." },
-          ],
+          type: "step",
+          text: "Click **Copy**, paste into the prompt box and press Enter.",
+          then: [{ type: "prompt", id: "first-hello", title: "Your first prompt", text: "Say hello, and tell me which folder you're working in. Don't change anything." }],
         },
-        { type: "p", text: "Start big tasks in Plan mode. If you don't understand a plan, ask Claude to explain it in plain language before you approve." },
+        { type: "step", text: "Claude should reply with `my-first-app`. If it does, you're set up." },
+      ],
+    },
+    {
+      slug: "turn-on-plan-mode",
+      title: "Turn on Plan mode",
+      description: "Plan mode makes Claude show you its plan before it changes anything.",
+      blocks: [
+        { type: "p", text: "In Plan mode, Claude shows you what it wants to do and waits for your approval. You'll use it for everything big." },
+        { type: "step", text: "Click the mode menu in the row under the prompt box, and choose **Plan**.", then: [{ type: "mock", show: "mode" }] },
+        { type: "p", text: "The mode resets when you start a new session, so check it each time." },
+        { type: "p", text: "Don't understand something Claude shows you? Type \"Explain that in plain language.\" No question is too basic." },
       ],
     },
   ],

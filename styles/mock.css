@@ -1,0 +1,182 @@
+/* Drawings of where to click. Quiet everywhere except the one marked control. */
+.mock {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.m-window {
+  overflow: hidden;
+  max-width: 520px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.m-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.m-bar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.m-title {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.m-bar > .m-title:only-child {
+  margin: 0 auto;
+}
+
+.m-body {
+  display: flex;
+  min-height: 92px;
+}
+
+.m-side {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 108px;
+  padding: 12px;
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.m-side b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.m-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.m-prompt {
+  position: relative;
+  width: 100%;
+}
+
+.m-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.m-quiet {
+  color: var(--muted);
+}
+
+.m-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.m-row > span {
+  white-space: nowrap;
+}
+
+.m-menu {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgb(31 26 23 / 0.08);
+}
+
+.m-files {
+  justify-content: center;
+  align-items: center;
+}
+
+.m-chat {
+  margin: 0;
+  color: var(--ink);
+}
+
+.m-link {
+  font-family: var(--mono);
+}
+
+/* The one place to click */
+.hit {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 6px;
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  background: var(--tint);
+  color: var(--accent-press);
+  font-weight: 600;
+}
+
+.hit b {
+  color: inherit;
+}
+
+.m-install {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 16px;
+}
+
+.m-icon {
+  display: inline-block;
+  padding: 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.m-icon.hit {
+  padding: 16px 12px;
+  border-color: transparent;
+}
+
+.m-arrow {
+  color: var(--accent);
+  font-size: var(--h2);
+}
+
+@media (max-width: 640px) {
+  .m-side {
+    width: 84px;
+    padding: 10px;
+  }
+  .m-install {
+    gap: 12px;
+  }
+}

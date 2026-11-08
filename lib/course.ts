@@ -11,9 +11,15 @@ export const lessonBySlug = (slug: string) => lessons.find((l) => l.slug === slu
 
 export const nextLesson = (slug: string) => lessons[lessons.findIndex((l) => l.slug === slug) + 1];
 
-const allBlocks = (blocks: Block[]): Block[] => blocks.flatMap((b) => (b.type === "dive" ? [b, ...allBlocks(b.blocks)] : [b]));
+export const flatten = (blocks: Block[]): Block[] =>
+  blocks.flatMap((b) => {
+    if (b.type === "dive") return [b, ...flatten(b.blocks)];
+    if (b.type === "step") return [b, ...flatten(b.then ?? [])];
+    if (b.type === "os") return [b, ...flatten(b.mac), ...flatten(b.windows)];
+    return [b];
+  });
 
-export const lessonBlocks = (l: Lesson) => allBlocks(l.blocks);
+export const lessonBlocks = (l: Lesson) => flatten(l.blocks);
 
 // A prompt has one home: its lesson. The All prompts page is built from these.
 export const promptsByPart = parts.map((part) => ({
