@@ -5,13 +5,14 @@ import type { Part } from "@/lib/types";
 export const habitTracker: Part = {
   slug: "habit-tracker",
   title: "Build a habit tracker",
+  group: "Optional exercise",
   lessons: [
     {
       slug: "plan-the-habit-tracker",
       title: "Plan the habit tracker",
       description: "Practice the whole process on a small app, starting with a one-page plan.",
       blocks: [
-        { type: "p", text: "Let's build one small app together, from start to finish. You'll see how it all works before you try your own idea." },
+        { type: "p", text: "Let's build one small app together, from start to finish, so you can see how it all works. Already have an idea? [Skip to your own app](/lessons/define-the-problem)." },
         { type: "p", text: "Good apps start on paper, so Claude writes the plan first." },
         newPlanSession(),
         pastePrompt({
@@ -93,7 +94,7 @@ Create a short CLAUDE.md that says what this app is, points to the files in docs
           text: `Read CLAUDE.md and everything in docs/. Build both milestones from docs/plan.md in index.html, and follow docs/design.md. Then tell me how to open it.`,
         }),
         approve("Claude writes the code."),
-        { type: "step", text: "Click `index.html` in the chat. It opens in the app's browser. Yours won't look exactly like this, because Claude makes its own choices.", then: [{ type: "image", src: "/lessons/habit-tracker.jpg", alt: "The finished habit tracker: a box to add a habit, and a list of habits with checkboxes and days in a row." }] },
+        { type: "step", text: "Click `index.html` in the chat. It opens in the app's browser. Yours won't look exactly like this, because Claude makes its own choices.", then: [{ type: "image", src: "/lessons/habit-tracker.jpg", alt: "The finished habit tracker: a list of habits with checkboxes and days in a row, and a box to add a new one." }] },
         { type: "step", text: "Try it. Add a habit called **Read**, check it off and refresh the page. It should still be there." },
       ],
     },

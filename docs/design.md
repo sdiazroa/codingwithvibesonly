@@ -25,8 +25,8 @@ Architecture is the foundation. Design shapes everything people touch. Good prod
 ## Screens
 - **Landing:** one light full page, no split, no scrolling at any size. Moving blue arc, headline, one short line, one button, and the author credit.
 - **Lesson:** title, then the walkthrough, then Next. Nothing above the title.
-- **Sidebar:** stages, with only the current stage's lessons open, a label where the student's own app begins, and the author credit at the very bottom. Phones get the same list behind Menu.
-- **All prompts:** the prompts, grouped by stage.
+- **Sidebar:** the site mark, then stages with only the current stage's lessons open. Labels mark the optional exercise and the student's own app, and each label jumps to its start. All prompts and the author credit sit below. Phones get the same list behind Menu.
+- **All prompts:** a search box above the prompts, grouped by stage. Search filters as you type.
 
 ## Drawings
 `components/Mock.tsx` draws where to click, marking the control with `.hit`. They're simplified on purpose. Names come from the [Claude Code docs](https://code.claude.com/docs/en/desktop). When the app changes, update them.

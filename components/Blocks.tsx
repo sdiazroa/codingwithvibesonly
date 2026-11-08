@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Checklist } from "@/components/Checklist";
 import { Dive } from "@/components/Dive";
@@ -37,6 +38,13 @@ function Inline({ text, ctx }: { text: string; ctx: Ctx }) {
         if (part.startsWith("`")) return <code key={i}>{part.slice(1, -1)}</code>;
         const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
         if (link) {
+          if (link[2].startsWith("/")) {
+            return (
+              <Link key={i} href={link[2]}>
+                {link[1]}
+              </Link>
+            );
+          }
           return (
             <a key={i} href={link[2]} target="_blank" rel="noreferrer">
               {link[1]}

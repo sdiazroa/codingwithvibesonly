@@ -28,7 +28,7 @@ Each stage is one file in `content/lessons/`. `tests/content.test.ts` enforces t
 - A prompt has one home, its lesson. All prompts is built from them.
 
 ## The habit tracker
-Its prompts are specific and don't interview the student, so everyone gets a working app. If you change one, test the result again.
+Its prompts are specific and don't interview the student, so everyone gets a working app. They were run in clean Claude Code on 2026-11-08, and the app they built passed in a browser. If you change one, run them again. The lesson's screenshot comes from that run.
 
 ## Keep it true
 Check every button name, command and plan against the [Claude Code docs](https://code.claude.com/docs/en/overview). If the docs don't name a label, describe it instead of guessing.

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Author } from "@/components/Author";
+import { Brand } from "@/components/Brand";
 import { useProgress } from "@/lib/progress";
 
 export type NavPart = { slug: string; title: string; group?: string; lessons: { slug: string; title: string }[] };
@@ -17,7 +18,11 @@ function Tree({ parts, path, onNavigate }: { parts: NavPart[]; path: string; onN
           const open = part.lessons.some((l) => path === `/lessons/${l.slug}`);
           return (
             <li key={part.slug}>
-              {part.group ? <span className="tree-group">{part.group}</span> : null}
+              {part.group ? (
+                <Link href={`/lessons/${part.lessons[0].slug}`} onClick={onNavigate} className="tree-group">
+                  {part.group}
+                </Link>
+              ) : null}
               <Link href={`/lessons/${part.lessons[0].slug}`} onClick={onNavigate} className={open ? "tree-stage open" : "tree-stage"}>
                 {part.title}
               </Link>
@@ -56,9 +61,7 @@ export function SideNav({ parts }: { parts: NavPart[] }) {
   return (
     <>
       <header className="phonebar">
-        <Link href="/" className="brand">
-          Coding with Vibes Only
-        </Link>
+        <Brand />
         <button type="button" className="dive-open" aria-expanded={open} onClick={() => setOpen(!open)}>
           {open ? "Close" : "Menu"}
         </button>
@@ -69,9 +72,7 @@ export function SideNav({ parts }: { parts: NavPart[] }) {
         </nav>
       ) : null}
       <aside className="sidebar">
-        <Link href="/" className="brand">
-          Coding with Vibes Only
-        </Link>
+        <Brand />
         <nav aria-label="Lessons">
           <Tree parts={parts} path={path} />
         </nav>

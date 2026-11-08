@@ -103,11 +103,15 @@ code {
 }
 
 .brand {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: var(--body);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
   color: var(--ink);
+  font-size: var(--small);
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* The one button */

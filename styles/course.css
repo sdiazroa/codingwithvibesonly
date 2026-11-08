@@ -1,7 +1,7 @@
 /* The frame around the lessons. */
 .course {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
   min-height: 100dvh;
 }
 
@@ -15,6 +15,7 @@
   top: 0;
   height: 100dvh;
   overflow-y: auto;
+  scrollbar-width: thin;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -32,19 +33,12 @@
 }
 
 .sidebar > .brand {
-  display: block;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .phonebar,
 .phonemenu {
   display: none;
-}
-
-.phonebar .brand {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
 }
 
 .tree,
@@ -75,12 +69,19 @@
 
 .tree-group {
   display: block;
-  margin: 16px 0 4px;
-  padding-top: 16px;
+  margin-top: 14px;
+  padding: 14px 0 4px;
   border-top: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--muted);
   font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.tree-group:hover {
+  color: var(--accent);
 }
 
 .tree-prompts {
@@ -150,6 +151,9 @@
     padding: 8px 20px 24px;
     background: var(--bg);
     flex-direction: column;
+  }
+  .phonemenu .tree-group {
+    padding-bottom: 8px;
   }
   .phonemenu .tree-stage,
   .phonemenu .tree-lesson {

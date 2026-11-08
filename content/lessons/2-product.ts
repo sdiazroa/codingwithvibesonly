@@ -18,7 +18,7 @@ export const product: Part = {
           left: { title: "Vague", items: ["A fitness app for everyone"] },
           right: { title: "Clear", items: ["Tells runners coming back from injury how far to run this week"] },
         },
-        { type: "step", text: "Create a new folder for your app, the same way you did for the habit tracker. In the Claude app, open it from the folder menu under the prompt box." },
+        { type: "step", text: "Create a new folder for your app, the same way you did [in setup](/lessons/create-your-project-folder). In the Claude app, open it from the folder menu under the prompt box." },
         newPlanSession(),
         pastePrompt({
           type: "prompt",

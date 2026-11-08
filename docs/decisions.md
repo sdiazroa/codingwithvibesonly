@@ -2,6 +2,7 @@
 
 What's true now, and why. Newest first. A reversed decision gets deleted; git has the history.
 
+- **2026-11-08** The navigation labels the habit tracker an optional exercise, and students can jump straight to their own app. The site name uses the landing page's font with the favicon mark beside it. All prompts has a search box. *Why:* Silvia's review: it has to be clear what is what.
 - **2026-11-08** The course has two paths in order: build a habit tracker together, then build your own app with the full process. *Why:* Silvia's call: people learn the loop on something concrete, and then think harder on their own idea. Other beginner courses also build a specific project.
 - **2026-11-08** The landing is dark blue with an arc that moves: light travels along it, its glow breathes, and a cursor blinks. The lessons stay light for reading. *Why:* Silvia's call: clean, with movement, and dark reads as more vibey and engineer coded. Blue tones, not orange.
 - **2026-11-08** The favicon is a prompt and cursor, `>_`. *Why:* that's what you type into when you vibe code.

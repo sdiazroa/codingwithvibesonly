@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Prompt } from "@/components/Prompt";
+import { PromptSearch } from "@/components/PromptSearch";
 import { promptsByPart } from "@/lib/course";
 
 export const metadata: Metadata = {
@@ -9,22 +9,17 @@ export const metadata: Metadata = {
 
 // Job: find a prompt and copy it.
 export default function AllPrompts() {
+  const groups = promptsByPart
+    .filter((g) => g.items.length)
+    .map(({ part, items }) => ({
+      slug: part.slug,
+      title: part.title,
+      items: items.map(({ id, title, mode, text }) => ({ id, title, mode, text })),
+    }));
   return (
     <article className="lesson">
       <h1>All prompts</h1>
-      {promptsByPart
-        .filter((g) => g.items.length)
-        .map(({ part, items }) => (
-          <section key={part.slug} className="prompt-group">
-            <h2>{part.title}</h2>
-            {items.map((prompt) => (
-              <div key={prompt.id}>
-                <p>{prompt.title}</p>
-                <Prompt label={prompt.mode ? `${prompt.mode} mode` : undefined} text={prompt.text} />
-              </div>
-            ))}
-          </section>
-        ))}
+      <PromptSearch groups={groups} />
     </article>
   );
 }
