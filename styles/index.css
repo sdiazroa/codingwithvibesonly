@@ -1,0 +1,6 @@
+/* One file per area. Change the existing rule instead of adding an override below it. */
+@import "./base.css";
+@import "./landing.css";
+@import "./course.css";
+@import "./lesson.css";
+@import "./figures.css";

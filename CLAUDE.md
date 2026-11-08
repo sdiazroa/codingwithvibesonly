@@ -1,28 +1,19 @@
-# Project: Vibe Coding Lesson
+# Coding with Vibes Only
 
-## Tech Stack
-- **Framework**: Next.js (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Linting**: ESLint
+A hands-on course that teaches non-technical people to build real apps with AI, starting with the blueprint. This repo follows what the course teaches.
 
-## Project Rules
-- Use the App Router (`app/` directory), not Pages Router
-- Prefer Server Components by default; add `"use client"` only when needed
-- Use Tailwind CSS for all styling — no inline styles or CSS modules unless necessary
-- Keep components small and focused; extract reusable pieces to `app/components/`
-- TypeScript strict mode is on — no `any` types
-- Run `npm run lint` before considering a feature complete
+Read these before changing anything:
+- [docs/product.md](docs/product.md): who it's for, what's in and out
+- [docs/design.md](docs/design.md): design rules and the review checklist
+- [docs/architecture.md](docs/architecture.md): how the site is built, and the release flow
+- [docs/decisions.md](docs/decisions.md): what was decided and why
+- [CONTENT.md](CONTENT.md): how to write a lesson
 
-## File Structure
-```
-app/
-  layout.tsx       # Root layout
-  page.tsx         # Home page
-  components/      # Shared UI components
-public/            # Static assets
-```
-
-## Progress
-- [x] Next.js project initialized with TypeScript + Tailwind CSS
-- [ ] ...
+Rules:
+- This version of Next.js may differ from what you remember. Read `node_modules/next/dist/docs/` before using an API.
+- Lessons live in `content/lessons/`. Don't build lesson text into components.
+- Reuse components and CSS tokens. A new color means a new line in `tests/contrast.test.ts`.
+- Run `npm run lint`, `npm run typecheck`, `npm test` and `npm run build` before calling anything done.
+- Look at every changed screen at 1440px and 375px before showing it to anyone.
+- When a decision changes, update the docs and note why in `docs/decisions.md`.
+- Commit messages end with the Co-Authored-By line for Claude.

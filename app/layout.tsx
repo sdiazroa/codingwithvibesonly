@@ -1,32 +1,44 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import "@/styles/index.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// Fonts are bundled so a build never depends on fetching them.
+const sans = localFont({
+  variable: "--font-sans",
+  src: [
+    { path: "../fonts/inter-latin-400-normal.woff2", weight: "400" },
+    { path: "../fonts/inter-latin-500-normal.woff2", weight: "500" },
+    { path: "../fonts/inter-latin-600-normal.woff2", weight: "600" },
+  ],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const serif = localFont({
+  variable: "--font-serif",
+  src: [
+    { path: "../fonts/source-serif-4-latin-500-normal.woff2", weight: "500" },
+    { path: "../fonts/source-serif-4-latin-600-normal.woff2", weight: "600" },
+  ],
 });
+
+const description = "A hands-on lesson on building a real app with AI. No coding experience needed.";
 
 export const metadata: Metadata = {
-  title: "Vibe Coding for PMs",
-  description: "A step-by-step guide to building your first app using AI-powered development.",
+  metadataBase: new URL("https://www.codingwithvibesonly.com"),
+  title: { default: "Coding with Vibes Only: learn to vibe code", template: "%s | Coding with Vibes Only" },
+  description,
+  openGraph: { title: "Welcome to vibe coding", description, siteName: "Coding with Vibes Only", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { themeColor: "#f8f6f0" };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+      <body>
+        <a href="#main" className="skip">
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

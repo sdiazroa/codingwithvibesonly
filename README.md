@@ -1,11 +1,12 @@
-# Vibe Coding for PMs
+# Coding with Vibes Only
 
-A step-by-step guide to building your first app using AI-powered development. No prior coding experience required.
+A hands-on course on building a real app with AI, for people who have never coded. It teaches the blueprint first: product, design and architecture. Then build.
 
-## Running Locally
+Live at [www.codingwithvibesonly.com](https://www.codingwithvibesonly.com).
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Start with [CLAUDE.md](CLAUDE.md), which points to the rest of the docs.

@@ -1,0 +1,183 @@
+/* One screen, no scrolling, at any size. */
+.landing {
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+
+.landing-copy {
+  display: flex;
+  flex-direction: column;
+  padding: 32px clamp(32px, 6vw, 96px);
+  min-height: 0;
+}
+
+.landing-main {
+  margin: auto 0;
+  max-width: 560px;
+}
+
+.landing h1 {
+  font-size: clamp(44px, 5.4vw, 80px);
+  line-height: 1.04;
+}
+
+.landing-sub {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.landing-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.landing-art {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 64px);
+  background-color: var(--blueprint);
+  background-image: linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: #ffffff;
+}
+
+/* The drawing */
+.house {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+  max-height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.house .thin {
+  stroke-width: 1.5;
+  opacity: 0.75;
+}
+
+.house-labels text {
+  fill: currentColor;
+  stroke: none;
+  font: 500 20px var(--sans);
+}
+
+.house-labels .n {
+  font-family: var(--mono);
+  opacity: 0.7;
+}
+
+.house-labels .leader {
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.65;
+}
+
+/* The drawing is complete by default. Motion only plays it in, so a paused animation can't leave it blank. */
+.house-draw path {
+  stroke-dasharray: 1;
+  animation: draw 700ms ease-out backwards;
+}
+
+.house-draw .h1 path { animation-delay: 150ms; }
+.house-draw .h2 path { animation-delay: 650ms; }
+.house-draw .h3 path { animation-delay: 1150ms; }
+.house-draw .h4 path { animation-delay: 1650ms; }
+
+/* The dashed leaders keep their own dashes. */
+.house-draw .house-labels path {
+  stroke-dasharray: 3 4;
+  animation: none;
+}
+
+.house-draw .house-labels text {
+  animation: appear 400ms ease-out 2100ms backwards;
+}
+
+@keyframes draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Phone: copy first, drawing fills what is left */
+@media (max-width: 820px) {
+  .landing {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .landing-copy {
+    padding: 20px 20px 24px;
+  }
+  .landing-main {
+    margin: 24px 0 0;
+  }
+  .landing h1 {
+    font-size: clamp(36px, 11vw, 56px);
+  }
+  .landing-sub {
+    margin-top: 12px;
+    font-size: 17px;
+  }
+  .landing-actions {
+    margin-top: 20px;
+    align-items: stretch;
+  }
+  .landing-actions .continue {
+    text-align: center;
+    padding: 6px 0;
+  }
+  .landing-art {
+    padding: 12px 16px;
+  }
+}
+
+/* Very short screens, like a phone on its side: the drawing gives way to the words. */
+@media (max-height: 560px) {
+  .landing {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .landing-art {
+    display: none;
+  }
+  .landing-copy {
+    padding: 12px 24px;
+  }
+  .landing-main {
+    margin: auto 0;
+  }
+  .landing h1 {
+    font-size: 32px;
+  }
+  .landing-sub {
+    margin-top: 6px;
+    font-size: 15px;
+  }
+  .landing-actions {
+    margin-top: 12px;
+    align-items: flex-start;
+  }
+  .btn-large {
+    min-height: 44px;
+    padding: 8px 22px;
+    font-size: 17px;
+  }
+}

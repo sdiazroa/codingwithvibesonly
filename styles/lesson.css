@@ -1,0 +1,511 @@
+/* A lesson: one idea per block, one next step at the end. */
+.lesson {
+  max-width: 800px;
+}
+
+.path ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 0;
+  margin: 0 0 32px;
+  padding: 0;
+}
+
+.path li {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.path li + li::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--field);
+  margin: 0 4px;
+}
+
+.path a {
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.path a:hover {
+  color: var(--ink);
+  background: var(--tint);
+}
+
+.path .past a {
+  color: var(--ink);
+}
+
+.path .now a {
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.lesson-meta {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.lesson-head h1 {
+  font-size: clamp(34px, 4vw, 48px);
+}
+
+.lesson-takeaway {
+  margin-top: 12px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.lesson-head .badge {
+  margin-top: 16px;
+}
+
+.lesson-body {
+  margin-top: 32px;
+}
+
+.lesson-body > p,
+.lesson-body > .steps,
+.dive-body > p,
+.dive-body > .steps {
+  margin: 0 0 18px;
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 12px 40px;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--tint);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 22px;
+}
+
+/* Prompts: the most important thing on the page, and the only dark one. */
+.prompt {
+  margin: 0 0 24px;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.prompt-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 14px 12px 18px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.prompt-name {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.prompt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.prompt-meta:empty {
+  display: none;
+}
+
+.chip {
+  border-radius: 5px;
+  padding: 2px 8px;
+  background: var(--code-mark);
+  color: var(--code-bg);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chip-quiet {
+  background: rgb(255 255 255 / 0.12);
+  color: var(--code-ink);
+  font-weight: 500;
+}
+
+.prompt-text {
+  margin: 0;
+  padding: 16px 18px 20px;
+  font: 15px/1.65 var(--mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.prompt-text mark {
+  background: none;
+  color: var(--code-mark);
+  font-weight: 600;
+}
+
+.prompt-command .prompt-head {
+  align-items: center;
+}
+
+.copy {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 132px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--code-bg);
+  font: 600 15px/1.2 var(--sans);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.prompt-command .copy {
+  min-width: 92px;
+}
+
+.copy:hover {
+  background: var(--tint);
+}
+
+.copy:active {
+  transform: translateY(1px);
+}
+
+.copy:focus-visible {
+  outline-color: var(--code-mark);
+}
+
+.copy-copied,
+.copy-copied:hover {
+  background: var(--code-mark);
+}
+
+/* Callouts */
+.rule,
+.myth {
+  margin: 0 0 24px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+}
+
+.rule {
+  background: var(--gate-tint);
+  color: var(--ink);
+  border-left: 4px solid var(--gate);
+}
+
+.rule strong {
+  color: var(--gate);
+}
+
+.myth {
+  background: var(--card);
+  border-left: 4px solid var(--field);
+}
+
+.rule strong,
+.myth strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Definitions */
+.term {
+  position: relative;
+  display: inline;
+}
+
+.term button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: help;
+  text-decoration: underline dotted var(--accent) 1.5px;
+  text-underline-offset: 3px;
+}
+
+.term-pop {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  z-index: 15;
+  width: min(300px, 76vw);
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  font-size: 15px;
+  line-height: 1.45;
+  box-shadow: 0 6px 20px rgb(23 32 51 / 0.2);
+}
+
+/* Dive deeper */
+.dive-open {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  margin: 0 0 24px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  font: 500 15px/1.3 var(--sans);
+  text-align: left;
+  cursor: pointer;
+}
+
+.dive-open:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.dive {
+  width: min(680px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.dive::backdrop {
+  background: rgb(23 32 51 / 0.55);
+}
+
+.dive-body {
+  padding: 24px;
+}
+
+.dive-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.dive-head h2 {
+  font-size: 26px;
+}
+
+/* Checklist */
+.checklist {
+  margin: 0 0 24px;
+  padding: 20px;
+  background: var(--card);
+  border: 2px solid var(--gate);
+  border-radius: var(--radius);
+}
+
+.checklist-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.checklist-head h2 {
+  font-size: 26px;
+}
+
+.checklist-head span {
+  color: var(--muted);
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.checklist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+}
+
+.checklist input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  accent-color: var(--done);
+  cursor: pointer;
+}
+
+.checklist-done {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--gate-tint);
+  color: var(--gate);
+  font-weight: 600;
+}
+
+/* End of a lesson */
+.recap {
+  margin-top: 40px;
+  padding: 20px 24px;
+  background: var(--tint);
+  border-radius: var(--radius);
+}
+
+.recap h2,
+.words h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.recap ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recap li + li {
+  margin-top: 4px;
+}
+
+.words {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 15px;
+}
+
+.words h2 {
+  font-size: 17px;
+}
+
+.words dl {
+  margin: 0;
+}
+
+.words dl div + div {
+  margin-top: 8px;
+}
+
+.words dt {
+  display: inline;
+  font-weight: 600;
+}
+
+.words dt::after {
+  content: ": ";
+}
+
+.words dd {
+  display: inline;
+  margin: 0;
+  color: var(--muted);
+}
+
+.lesson-nav {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+@media (max-width: 640px) {
+  .path ol {
+    margin-bottom: 20px;
+  }
+  /* A phone cannot fit the whole path: show where you are, and the stage next. */
+  .path li:not(.now) {
+    display: none;
+  }
+  .path .now::before {
+    display: none;
+  }
+  .path a {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 4px 12px;
+  }
+  .path .now + li {
+    display: flex;
+  }
+  .path .now + li::before {
+    margin-left: 4px;
+  }
+  .lesson-takeaway {
+    font-size: 17px;
+  }
+  .prompt-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+  .prompt-command .prompt-head {
+    align-items: stretch;
+  }
+  .copy {
+    width: 100%;
+  }
+  .prompt-text {
+    padding: 14px;
+  }
+  .lesson-nav .btn {
+    width: 100%;
+  }
+}
