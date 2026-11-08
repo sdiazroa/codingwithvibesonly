@@ -24,30 +24,6 @@ export const grow: Part = {
       ],
     },
     {
-      slug: "audit-your-project",
-      title: "Audit your project",
-      description: "Every so often, ask Claude to inspect the whole project, so small problems don't pile up.",
-      blocks: [
-        { type: "p", text: "Fast building creates drift: a second kind of button, the same logic written twice. Run an audit every few milestones and before launch." },
-        newPlanSession(),
-        pastePrompt({
-          type: "prompt",
-          id: "audit",
-          title: "Audit the project",
-          mode: "Plan",
-          text: `Audit this project as a senior designer and engineer. Don't change anything yet. I'm not technical, so use plain language.
-
-Design: check every screen against docs/design.md, at phone and desktop size. Is it consistent? Does every word, button and visual earn its place?
-Code: is it clean, and easy to change and grow? Look for duplication, dead code and drift from docs/architecture.md.
-Security: look for exposed keys, data people shouldn't see, and outdated packages.
-
-Rank what you find by how much it matters, and recommend the top three.`,
-        }),
-        { type: "step", text: "Read the report. Type \"Fix number one, then add a rule to CLAUDE.md so it doesn't come back.\"" },
-        approve("Claude makes the fix."),
-      ],
-    },
-    {
       slug: "grow-with-your-users",
       title: "Grow with your users",
       description: "Launching is the start. Real people show you what to build next.",

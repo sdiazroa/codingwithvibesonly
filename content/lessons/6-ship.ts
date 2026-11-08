@@ -1,10 +1,35 @@
-import { pastePrompt } from "@/content/patterns";
+import { approve, newPlanSession, pastePrompt } from "@/content/patterns";
 import type { Part } from "@/lib/types";
 
 export const ship: Part = {
   slug: "ship",
   title: "Ship",
   lessons: [
+    {
+      slug: "test-and-audit-before-launch",
+      title: "Test and audit before launch",
+      description: "Check your whole app before anyone else sees it, then keep checking as it grows.",
+      blocks: [
+        { type: "p", text: "Fast building creates drift: a second kind of button, the same logic written twice. Check everything before anyone else sees it, then run this again every few milestones." },
+        newPlanSession(),
+        pastePrompt({
+          type: "prompt",
+          id: "audit",
+          title: "Audit the project",
+          mode: "Plan",
+          text: `Audit this project as a senior designer and engineer. Don't change anything yet. I'm not technical, so use plain language.
+
+Testing: list the main things a person does in this app, try each one, and tell me what breaks.
+Design: check every screen against docs/design.md, at phone and desktop size. Is it consistent? Does every word, button and visual earn its place?
+Code: is it clean, and easy to change and grow? Look for duplication, dead code and drift from docs/architecture.md.
+Security: look for exposed keys, data people shouldn't see, and outdated packages.
+
+Rank what you find by how much it matters, and recommend the top three.`,
+        }),
+        { type: "step", text: "Read the report. Type \"Fix number one, then add a rule to CLAUDE.md so it doesn't come back.\"" },
+        approve("Claude makes the fix."),
+      ],
+    },
     {
       slug: "back-it-up-on-github",
       title: "Back it up on GitHub",

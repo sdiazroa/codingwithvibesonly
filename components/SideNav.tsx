@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Author } from "@/components/Author";
 import { useProgress } from "@/lib/progress";
 
 export type NavPart = { slug: string; title: string; lessons: { slug: string; title: string }[] };
@@ -43,6 +44,7 @@ function Tree({ parts, path, onNavigate }: { parts: NavPart[]; path: string; onN
       <Link href="/prompts" onClick={onNavigate} aria-current={path === "/prompts" ? "page" : undefined} className="tree-stage tree-prompts">
         All prompts
       </Link>
+      <Author />
     </>
   );
 }

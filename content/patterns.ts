@@ -19,7 +19,7 @@ export const answerQuestions: Block = {
 
 export const approve = (result: string): Block => ({
   type: "step",
-  text: `Read the plan Claude shows you. To change something, choose the option to keep planning and type what you'd change. When it looks right, approve it. ${result}`,
+  text: `Read the plan Claude shows you. To change it, keep planning and type what you'd change. When it looks right, approve it, and choose **Yes** when Claude asks to make changes. ${result}`,
 });
 
 export const readFile = (file: string): Block => ({

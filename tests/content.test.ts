@@ -48,7 +48,7 @@ for (const l of lessons) {
 
   ok(page.filter((b) => b.type === "step").length <= 8, `${l.slug}: at most 8 steps`);
   ok(page.filter((b) => b.type === "prompt").length <= 1, `${l.slug}: at most one prompt on the page`);
-  ok(page.filter((b) => ["flow", "compare", "rows", "house", "checklist"].includes(b.type)).length <= 1, `${l.slug}: at most one diagram`);
+  ok(page.filter((b) => ["flow", "compare", "rows", "checklist"].includes(b.type)).length <= 1, `${l.slug}: at most one diagram`);
   ok(l.blocks.filter((b) => b.type === "dive").length <= 1, `${l.slug}: at most one pop-up`);
 
   const body = flatten(l.blocks).flatMap((b) => (b.type === "p" || b.type === "step" ? [b.text] : [])).join(" ").toLowerCase();

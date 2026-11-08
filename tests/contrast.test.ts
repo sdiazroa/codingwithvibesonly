@@ -35,12 +35,10 @@ for (const [name, bg] of [["page", t.bg], ["card", t.card]] as const) {
 }
 check("button label", "#ffffff", t.accent, 4.5);
 check("button label, hover", "#ffffff", t["accent-press"], 4.5);
-check("landing headline", t["paper-ink"], t.night, 4.5);
-check("landing quiet text", t["paper-muted"], t.night, 4.5);
-check("landing button", t.night, t.glow, 4.5);
-check("landing button, hover", t.night, t.dawn, 4.5);
 check("marked control in a drawing", t["accent-press"], t.tint, 4.5);
 check("step number", t.bg, t.ink, 4.5);
+check("landing text", t.ink, t.sky, 4.5);
+check("landing quiet text", t.muted, t.sky, 4.5);
 
 if (failed) process.exit(1);
 console.log("contrast: every pair passes");

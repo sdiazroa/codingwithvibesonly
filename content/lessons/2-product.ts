@@ -6,22 +6,12 @@ export const product: Part = {
   title: "Product",
   lessons: [
     {
-      slug: "why-the-blueprint-comes-first",
-      title: "Why the blueprint comes first",
-      description: "Changing a plan takes a minute. Changing a built app takes much longer.",
-      blocks: [
-        { type: "p", text: "Nobody builds a house by laying bricks and seeing what happens. Moving a wall on paper is free. Moving it later is a project." },
-        { type: "house" },
-        { type: "p", text: "Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly." },
-        { type: "p", text: "Next, Claude will interview you and write three short documents: `product.md`, `design.md` and `architecture.md`. **No building until they're done.**" },
-      ],
-    },
-    {
       slug: "define-the-problem",
       title: "Define the problem",
       description: "A good app starts with a specific person and a specific problem.",
       blocks: [
-        { type: "p", text: "Good products start with a person who has a problem." },
+        { type: "p", text: "Before anything gets built, Claude will interview you and write three short documents: product, design and architecture. Moving a wall on paper is free. Moving it later is a project." },
+        { type: "p", text: "Start with the product. Good products start with a person who has a problem." },
         {
           type: "compare",
           left: { title: "Vague", items: ["A fitness app for everyone"] },
@@ -41,7 +31,7 @@ export const product: Part = {
 Push back if I'm vague. Don't write any code. When we're done, save a one-page summary as docs/product.md.`,
         }),
         answerQuestions,
-        approve("Claude creates the document. If it asks permission to create a file, allow it."),
+        approve("Claude creates the document."),
         {
           type: "step",
           text: "Click `docs/product.md` in the chat to read it. If something's wrong, tell Claude what to change.",

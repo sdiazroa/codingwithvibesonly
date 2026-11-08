@@ -28,7 +28,6 @@ export type Block =
   | { type: "flow"; items: string[] }
   | { type: "compare"; left: { title: string; items: string[] }; right: { title: string; items: string[] } }
   | { type: "rows"; items: { title: string; note: string }[] }
-  | { type: "house" }
   | { type: "dive"; title: string; blocks: Block[] }
   | { type: "checklist"; id: string; items: string[]; done: string };
 

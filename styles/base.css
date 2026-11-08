@@ -1,18 +1,14 @@
 /* Every color is a token. tests/contrast.test.ts checks every pair. */
 :root {
-  --bg: #f9f6f1;
+  --bg: #f8f6f0;
   --card: #ffffff;
-  --ink: #1f1a17;
-  --muted: #5f574f;
-  --line: #e6dfd5;
-  --accent: #b4431c;
-  --accent-press: #8f3414;
-  --tint: #fbeee6;
-  --night: #15100e;
-  --paper-ink: #f6efe6;
-  --paper-muted: #b9aea3;
-  --glow: #ff8a4c;
-  --dawn: #ffc46b;
+  --ink: #172033;
+  --muted: #545d72;
+  --line: #e2dfd5;
+  --accent: #1f4fd1;
+  --accent-press: #173da6;
+  --tint: #e9eefc;
+  --sky: #eef3ff;
 
   --sans: var(--font-sans), system-ui, sans-serif;
   --serif: var(--font-serif), Georgia, serif;
@@ -152,6 +148,20 @@ code {
 
 .dive-open:hover {
   color: var(--ink);
+}
+
+.author {
+  display: inline-block;
+  padding: 10px 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.author:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .continue {

@@ -72,8 +72,17 @@ export const getReady: Part = {
       blocks: [
         { type: "p", text: "In Plan mode, Claude shows you what it wants to do and waits for your approval. You'll use it for everything big." },
         { type: "step", text: "Click the mode menu in the row under the prompt box, and choose **Plan**.", then: [{ type: "mock", show: "mode" }] },
-        { type: "p", text: "The mode resets when you start a new session, so check it each time." },
-        { type: "p", text: "Don't understand something Claude shows you? Type \"Explain that in plain language.\" No question is too basic." },
+        { type: "p", text: "The mode resets with each new session." },
+        { type: "p", text: "When Claude wants to change something, it shows you the change and asks:" },
+        {
+          type: "rows",
+          items: [
+            { title: "Yes", note: "Make this one change." },
+            { title: "Yes, and don't ask again", note: "Make this change and future edits in this session." },
+            { title: "No", note: "Don't make it. Then tell Claude why." },
+          ],
+        },
+        { type: "p", text: "Don't understand something? Type \"Explain that in plain language.\"" },
       ],
     },
   ],

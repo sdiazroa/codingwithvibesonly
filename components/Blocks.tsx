@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Checklist } from "@/components/Checklist";
 import { Dive } from "@/components/Dive";
-import { House } from "@/components/House";
 import { Mock } from "@/components/Mock";
 import { OsTabs } from "@/components/OsTabs";
 import { Prompt } from "@/components/Prompt";
@@ -123,12 +122,6 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
             </div>
           ))}
         </dl>
-      );
-    case "house":
-      return (
-        <div className="house-fig">
-          <House />
-        </div>
       );
     case "dive":
       return (

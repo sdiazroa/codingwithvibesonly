@@ -183,58 +183,6 @@
   color: var(--muted);
 }
 
-/* The house inside a lesson */
-.house-fig {
-  padding: 24px;
-  border-radius: var(--radius);
-  background: var(--night);
-  color: var(--paper-ink);
-}
-
-.house {
-  display: block;
-  width: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.house .thin {
-  stroke-width: 1.5;
-}
-
-.house .base {
-  fill: var(--glow);
-  fill-opacity: 0.35;
-  stroke: var(--glow);
-}
-
-.house .wire {
-  stroke: var(--dawn);
-  stroke-width: 2;
-  stroke-dasharray: 2 7;
-}
-
-.house-labels path {
-  stroke-width: 1;
-}
-
-.house-labels .leader {
-  stroke-dasharray: 2 4;
-}
-
-.house-labels text {
-  fill: currentColor;
-  stroke: none;
-  font: 500 20px var(--sans);
-}
-
-.house-fig .house {
-  height: auto;
-}
-
 /* Self-check */
 .checklist {
   list-style: none;
@@ -372,8 +320,5 @@
   }
   .prompt pre {
     padding: 8px 16px 16px;
-  }
-  .house-fig {
-    padding: 12px;
   }
 }

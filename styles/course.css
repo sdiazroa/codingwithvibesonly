@@ -16,6 +16,19 @@
   height: 100dvh;
   overflow-y: auto;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .author,
+.phonemenu .author {
+  margin-top: auto;
 }
 
 .sidebar > .brand {
@@ -119,13 +132,14 @@
     background: var(--bg);
   }
   .phonemenu {
-    display: block;
+    display: flex;
     position: fixed;
     inset: 56px 0 0;
     z-index: 19;
     overflow-y: auto;
-    padding: 8px 20px 48px;
+    padding: 8px 20px 24px;
     background: var(--bg);
+    flex-direction: column;
   }
   .phonemenu .tree-stage,
   .phonemenu .tree-lesson {

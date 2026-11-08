@@ -28,7 +28,7 @@ export const build: Part = {
 Then read CLAUDE.md and docs/, and build milestone 1 from docs/plan.md and nothing else. Show me your plan first. When you're done, open the app in the preview and tell me what to check.`,
         }),
         approve("Claude starts building."),
-        { type: "step", text: "Claude may ask permission to run commands. Read each one and allow it. If you're unsure, ask what it does. On a Mac, if a window offers to install developer tools, click **Install**." },
+        { type: "step", text: "Claude will ask before running commands. Read each one and choose **Yes**. If you're unsure, ask what it does. On a Mac, if a window offers to install developer tools, click **Install**." },
         checkItYourself,
         { type: "step", text: "If something's off, tell Claude. When it works, say \"This works. Commit it.\"" },
       ],

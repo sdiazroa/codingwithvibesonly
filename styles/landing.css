@@ -1,4 +1,4 @@
-/* One full screen, no scrolling, at any size. A sunrise over a dark horizon. */
+/* One full screen, no scrolling, at any size. A blue horizon on a light page. */
 .landing {
   position: relative;
   height: 100dvh;
@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--night);
-  color: var(--paper-ink);
+  background: var(--sky);
+  color: var(--ink);
   text-align: center;
 }
 
@@ -27,12 +27,11 @@
   aspect-ratio: 1;
   border-radius: 50%;
   transform: translateX(-50%);
-  background: var(--night);
+  background: var(--sky);
   box-shadow:
-    0 -2px 3px var(--dawn),
-    0 -8px 36px var(--glow),
-    0 -28px 120px rgb(255 122 69 / 0.42),
-    inset 0 10px 48px rgb(255 138 76 / 0.32);
+    0 -1px 2px var(--accent),
+    0 -6px 28px rgb(31 79 209 / 0.45),
+    0 -24px 110px rgb(31 79 209 / 0.28);
   animation: rise 1400ms ease-out backwards;
 }
 
@@ -68,45 +67,23 @@
   margin-top: 20px;
   max-width: 34em;
   text-wrap: balance;
-  color: var(--paper-muted);
+  color: var(--muted);
   font-size: var(--body);
 }
 
-.btn-glow {
-  margin-top: 36px;
+.btn-start {
+  margin-top: 32px;
   min-height: 56px;
   padding: 14px 34px;
-  background: var(--glow);
-  color: var(--night);
-  font-size: var(--body);
-  font-weight: 600;
-}
-
-.btn-glow:hover {
-  background: var(--dawn);
-}
-
-.btn-glow:focus-visible,
-.landing .continue:focus-visible {
-  outline-color: var(--dawn);
 }
 
 .landing .continue {
   margin-top: 8px;
-  color: var(--paper-muted);
 }
 
-.landing .continue:hover {
-  color: var(--paper-ink);
-}
-
-.landing-name {
+.landing > .author {
   flex: none;
-  padding: 16px 0 24px;
-  color: var(--paper-muted);
-  font-size: 13px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 640px) {
@@ -121,7 +98,7 @@
     letter-spacing: 0.18em;
     margin-right: -0.18em;
   }
-  .btn-glow {
+  .btn-start {
     align-self: stretch;
   }
 }
@@ -138,13 +115,13 @@
     margin-top: 8px;
     font-size: var(--small);
   }
-  .btn-glow {
+  .btn-start {
     align-self: center;
     margin-top: 14px;
     min-height: 44px;
     padding: 8px 24px;
   }
-  .landing-name {
+  .landing > .author {
     display: none;
   }
 }

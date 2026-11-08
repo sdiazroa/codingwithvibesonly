@@ -20,7 +20,7 @@ const serif = localFont({
   ],
 });
 
-const description = "A hands-on lesson on building a real app with AI. No coding experience needed.";
+const description = "Learn to build a real app with AI. No coding experience needed.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.codingwithvibesonly.com"),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export const viewport: Viewport = { themeColor: "#f9f6f1" };
+export const viewport: Viewport = { themeColor: "#eef3ff" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
