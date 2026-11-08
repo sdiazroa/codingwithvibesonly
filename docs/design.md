@@ -1,34 +1,33 @@
 # Design
 
-## North star
-A blueprint on a clean desk: calm, precise, a little bit crafted. Welcoming to beginners and grown-up about it. Clear like Notion, structured like Khan Academy. Not a noisy game and not a default AI template.
+## The rule
+**Every word, button and visual earns its place, or it goes.** Clean is the goal. Passing an automated check doesn't mean a screen is clean. Ask: would the reader miss this?
 
 ## Principles
-1. **One clear next step.** Each screen has one main action.
-2. **Show, then tell.** A diagram or prompt beats a paragraph.
-3. **Few words.** If a sentence doesn't help someone learn or act, cut it.
-4. **Copying is one click.** Anything to paste has a button.
-5. **Progress without pressure.** No grades, no streaks, no guilt.
-6. **Practice what we teach.** The site should pass its own audits.
+1. **One idea per screen.** A lesson teaches one thing, with at most one prompt and one visual.
+2. **One clear action.** Copy the prompt, then Next.
+3. **Say it once.** No summary of what the page just said. No label for what's already obvious.
+4. **Space before lines, lines before boxes.** The only box in a lesson is a prompt, because that's what the student acts on.
+5. **Consistent everywhere.** The same thing always looks the same. Use the tokens and components below, and don't add new ones without removing something.
+6. **A visual has to be true.** If a diagram's logic is off, fix it or cut it.
 
-## Visual system
-- **Color:** tokens in `styles/base.css`. Paper background, ink text, one blue for actions and links. Amber means blueprint stage, and nothing else. The only dark element is a prompt, because it's what the student acts on.
-- **Type:** Source Serif 4 for headings, Inter for everything else, the system monospace for prompts. Sizes: 13, 15, 17, 20 and 26, plus one large heading. At most six on a screen.
-- **Space:** generous between ideas. Prefer space or a tint over a border.
-- **Diagrams:** built from text and CSS in `components/Figures.tsx`, so they reflow on a phone and the words stay readable. The house is the one drawing.
-- **Motion:** short, and only to orient. The landing house draws itself from the foundation up. Off under `prefers-reduced-motion`, and the drawing is complete without it.
+## How the course sees it
+Architecture is the foundation. Design shapes everything people touch. Good product management keeps it all running smoothly. Any visual of these should say that.
 
-## Controls
-- Every control has hover, keyboard focus and pressed states. Copy says "Copied."
-- On a phone, buttons are full width and tap targets are at least 40px. Links inside running text are exempt.
+## The system
+- **Color:** paper, white for prompts, ink, one quiet gray, one blue for action. Deep blue only for the blueprint drawing.
+- **Type:** Source Serif 4 for headings, Inter for everything else, monospace for text to copy. Four sizes: 15, 17, 20 and 40. The landing headline is the one exception.
+- **Components:** one button, one quiet text control, prompt, flow, compare, rows, the house, checklist, pop-up.
+- **Motion:** only the landing drawing. It's complete without the animation.
 
 ## Screens
-- **Landing:** one screen with no scrolling at any size. Headline, one line, one button, and a quiet continue link for returning students. Checked at 1280x720, 1440x800, 1920x1080, 1024x600, 768x1024, 375x812, 375x667, 320x568 and 667x375. On very short screens the drawing gives way to the words.
-- **Lesson:** path, title, takeaway, blocks, recap, words to know, next step. Never hide lesson content in accordions.
-- **Sidebar:** every lesson, with a dot that fills when done. The blueprint stages are marked. Phones get a Menu button with the same list.
+- **Landing:** one screen, no scrolling, at any size. Headline, one line, one button. Returning students also get a quiet continue link.
+- **Lesson:** title, content, Next. Nothing above the title.
+- **Sidebar:** stages, with only the current stage's lessons open. Dots show progress. Phones get the same list behind Menu.
+- **All prompts:** the prompts, grouped by stage.
 
 ## Review before showing anyone
-1. Say the screen's job and its one main action in a sentence.
+1. Say the screen's job in one sentence, then look at each element and ask whether it helps that job. Remove what doesn't.
 2. Look at it at 1440px and 375px, in screenshots.
-3. Competing buttons? Too many sizes? Anything that looks like a default AI template (everything centered, floating cards, gradient blobs)?
-4. Copy `tools/ui-audit.js` to `public/__audit.js`, serve the production build, add it to the page with a script tag and run `window.__audit()`. It checks contrast, tap targets, sideways scrolling and text sizes. Delete the copy afterward.
+3. Compare it to the principles above. Say honestly where it falls short.
+4. Copy `tools/ui-audit.js` to `public/__audit.js`, serve the production build, add it to the page with a script tag and run `window.__audit()`. Delete the copy afterward. Tap targets on phones are at least 40px.

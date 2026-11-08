@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { Checklist } from "@/components/Checklist";
 import { Dive } from "@/components/Dive";
-import { Cards, Compare, Files, Flow, HouseFigure, Layers } from "@/components/Figures";
-import { Command, Prompt } from "@/components/Prompt";
+import { House } from "@/components/House";
+import { Prompt } from "@/components/Prompt";
 import { Term } from "@/components/Term";
 import type { Block, Word } from "@/lib/types";
 
@@ -10,12 +10,11 @@ type Ctx = { words: Word[]; seen: Set<string> };
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-// Definitions attach to the first use of a term in a lesson, never inside bold or code.
+// A definition attaches to the first use of a term in a lesson, never inside bold or code.
 function withTerms(text: string, ctx: Ctx, key: string): ReactNode[] {
   const open = ctx.words.filter((w) => !ctx.seen.has(w.term));
   if (!open.length) return [text];
-  const pattern = new RegExp(`\\b(${open.map((w) => escape(w.term)).join("|")})\\b`, "i");
-  const m = pattern.exec(text);
+  const m = new RegExp(`\\b(${open.map((w) => escape(w.term)).join("|")})\\b`, "i").exec(text);
   if (!m) return [text];
   const word = open.find((w) => w.term.toLowerCase() === m[1].toLowerCase());
   if (!word) return [text];
@@ -29,23 +28,21 @@ function withTerms(text: string, ctx: Ctx, key: string): ReactNode[] {
   ];
 }
 
-export function Inline({ text, ctx }: { text: string; ctx?: Ctx }) {
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
+function Inline({ text, ctx }: { text: string; ctx: Ctx }) {
   return (
     <>
-      {parts.map((part, i) => {
+      {text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
         if (part.startsWith("**")) return <strong key={i}>{part.slice(2, -2)}</strong>;
         if (part.startsWith("`")) return <code key={i}>{part.slice(1, -1)}</code>;
         const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
         if (link) {
-          const external = link[2].startsWith("http");
           return (
-            <a key={i} href={link[2]} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>
+            <a key={i} href={link[2]} target="_blank" rel="noreferrer">
               {link[1]}
             </a>
           );
         }
-        return <span key={i}>{ctx ? withTerms(part, ctx, String(i)) : part}</span>;
+        return <span key={i}>{withTerms(part, ctx, String(i))}</span>;
       })}
     </>
   );
@@ -69,49 +66,49 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
           ))}
         </ol>
       );
-    case "links":
+    case "prompt":
+      return <Prompt label={block.mode ? `${block.mode} mode` : undefined} text={block.text} />;
+    case "command":
+      return <Prompt label={block.label} text={block.text} />;
+    case "flow":
       return (
-        <div className="links">
-          {block.items.map((l) => (
-            <a key={l.href} className="btn btn-ghost" href={l.href} target="_blank" rel="noreferrer">
-              {l.label}
-            </a>
+        <ol className="flow">
+          {block.items.map((s) => (
+            <li key={s}>{s}</li>
+          ))}
+        </ol>
+      );
+    case "compare":
+      return (
+        <div className="compare">
+          {[block.left, block.right].map((side) => (
+            <div key={side.title}>
+              <h2>{side.title}</h2>
+              <ul>
+                {side.items.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       );
-    case "prompt":
-      return <Prompt title={block.title} mode={block.mode} saves={block.saves} text={block.text} />;
-    case "command":
-      return <Command label={block.label} text={block.text} />;
-    case "flow":
-      return <Flow items={block.items} loop={block.loop} caption={block.caption} />;
-    case "compare":
-      return <Compare left={block.left} right={block.right} caption={block.caption} />;
-    case "cards":
-      return <Cards items={block.items} caption={block.caption} />;
-    case "layers":
-      return <Layers items={block.items} caption={block.caption} />;
-    case "files":
-      return <Files items={block.items} caption={block.caption} />;
-    case "house":
-      return <HouseFigure caption={block.caption} />;
-    case "rule":
+    case "rows":
       return (
-        <aside className="rule">
-          <strong>{block.title}</strong>
-          <p>
-            <Inline text={block.text} ctx={ctx} />
-          </p>
-        </aside>
+        <dl className="rows">
+          {block.items.map((r) => (
+            <div key={r.title}>
+              <dt>{r.title}</dt>
+              <dd>{r.note}</dd>
+            </div>
+          ))}
+        </dl>
       );
-    case "myth":
+    case "house":
       return (
-        <aside className="myth">
-          <strong>{block.title}</strong>
-          <p>
-            <Inline text={block.text} ctx={ctx} />
-          </p>
-        </aside>
+        <div className="house-fig">
+          <House />
+        </div>
       );
     case "dive":
       return (
@@ -120,7 +117,7 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
         </Dive>
       );
     case "checklist":
-      return <Checklist id={block.id} title={block.title} items={block.items} done={block.done} />;
+      return <Checklist id={block.id} items={block.items} done={block.done} />;
   }
 }
 

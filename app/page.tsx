@@ -20,7 +20,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="landing-art" aria-hidden="false">
+      <div className="landing-art">
         <House animate />
       </div>
     </main>

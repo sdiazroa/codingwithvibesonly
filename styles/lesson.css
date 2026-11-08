@@ -1,261 +1,169 @@
-/* A lesson: one idea per block, one next step at the end. */
+/* A lesson: a title, one idea, the next step. Space separates things. The only box is a prompt. */
 .lesson {
-  max-width: 800px;
+  max-width: 680px;
 }
 
-.path ol {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 0;
-  margin: 0 0 32px;
-  padding: 0;
+.lesson > h1 {
+  margin-bottom: 32px;
 }
 
-.path li {
+.lesson > *:not(h1):not(:last-child),
+.dive-body > * {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Text to copy */
+.prompt {
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.prompt figcaption {
   display: flex;
   align-items: center;
-  font-size: 13px;
-}
-
-.path li + li::before {
-  content: "";
-  width: 14px;
-  height: 1px;
-  background: var(--field);
-  margin: 0 4px;
-}
-
-.path a {
-  padding: 3px 8px;
-  border-radius: 6px;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.path a:hover {
-  color: var(--ink);
-  background: var(--tint);
-}
-
-.path .past a {
-  color: var(--ink);
-}
-
-.path .now a {
-  background: var(--accent);
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.lesson-meta {
-  color: var(--muted);
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.lesson-head h1 {
-  font-size: clamp(34px, 4vw, 48px);
-}
-
-.lesson-takeaway {
-  margin-top: 12px;
-  font-size: 20px;
-  line-height: 1.45;
-  color: var(--muted);
-}
-
-.lesson-head .badge {
-  margin-top: 16px;
-}
-
-.lesson-body {
-  margin-top: 32px;
-}
-
-.lesson-body > p,
-.lesson-body > .steps,
-.dive-body > p,
-.dive-body > .steps {
-  margin: 0 0 18px;
-}
-
-.steps {
-  list-style: none;
-  counter-reset: step;
-  padding: 0;
-}
-
-.steps li {
-  counter-increment: step;
-  position: relative;
-  padding: 0 0 12px 40px;
-}
-
-.steps li::before {
-  content: counter(step);
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 26px;
-  height: 26px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--tint);
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 22px;
-}
-
-/* Prompts: the most important thing on the page, and the only dark one. */
-.prompt {
-  margin: 0 0 24px;
-  background: var(--code-bg);
-  color: var(--code-ink);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.prompt-head {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 14px 12px 18px;
-  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  padding: 10px 10px 0 20px;
+  color: var(--muted);
+  font-size: var(--small);
 }
 
-.prompt-name {
-  display: block;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-.prompt-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.prompt-meta:empty {
-  display: none;
-}
-
-.chip {
-  border-radius: 5px;
-  padding: 2px 8px;
-  background: var(--code-mark);
-  color: var(--code-bg);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.chip-quiet {
-  background: rgb(255 255 255 / 0.12);
-  color: var(--code-ink);
-  font-weight: 500;
-}
-
-.prompt-text {
+.prompt pre {
   margin: 0;
-  padding: 16px 18px 20px;
-  font: 15px/1.65 var(--mono);
+  padding: 8px 20px 20px;
+  font: var(--small) / 1.6 var(--mono);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
-.prompt-text mark {
+.prompt mark {
   background: none;
-  color: var(--code-mark);
+  color: var(--accent);
   font-weight: 600;
 }
 
-.prompt-command .prompt-head {
-  align-items: center;
-}
-
 .copy {
-  flex: none;
-  display: inline-flex;
+  min-width: 84px;
+  font-size: var(--small);
+}
+
+/* Numbered steps */
+.steps {
+  padding-left: 22px;
+}
+
+.steps li + li {
+  margin-top: 8px;
+}
+
+/* A sequence */
+.flow {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-width: 132px;
-  min-height: 44px;
-  padding: 8px 14px;
-  border: 0;
-  border-radius: 8px;
-  background: #ffffff;
-  color: var(--code-bg);
-  font: 600 15px/1.2 var(--sans);
-  cursor: pointer;
-  transition: background-color 120ms ease;
+  gap: 4px 0;
+  padding: 0;
+  font-weight: 500;
 }
 
-.prompt-command .copy {
-  min-width: 92px;
+.flow li + li::before {
+  content: "→";
+  margin: 0 12px;
+  color: var(--muted);
+  font-weight: 400;
 }
 
-.copy:hover {
-  background: var(--tint);
+/* Two sides */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
-.copy:active {
-  transform: translateY(1px);
+.compare h2 {
+  margin-bottom: 8px;
+  font: 600 var(--body) / 1.4 var(--sans);
 }
 
-.copy:focus-visible {
-  outline-color: var(--code-mark);
+.compare ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
 }
 
-.copy-copied,
-.copy-copied:hover {
-  background: var(--code-mark);
+.compare li + li {
+  margin-top: 6px;
 }
 
-/* Callouts */
-.rule,
-.myth {
-  margin: 0 0 24px;
-  padding: 16px 18px;
+/* A name and what it means */
+.rows {
+  margin: 0;
+}
+
+.rows div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.rows dt {
+  font-weight: 600;
+}
+
+.rows dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* The house inside a lesson */
+.house-fig {
+  padding: 24px;
   border-radius: var(--radius);
 }
 
-.rule {
-  background: var(--gate-tint);
-  color: var(--ink);
-  border-left: 4px solid var(--gate);
+.house-fig .house {
+  height: auto;
 }
 
-.rule strong {
-  color: var(--gate);
+/* Self-check */
+.checklist {
+  list-style: none;
+  padding: 0;
 }
 
-.myth {
-  background: var(--card);
-  border-left: 4px solid var(--field);
+.checklist label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 7px 0;
+  cursor: pointer;
 }
 
-.rule strong,
-.myth strong {
-  display: block;
-  margin-bottom: 4px;
+.checklist input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 4px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
 }
 
-/* Definitions */
+.checklist-done {
+  margin-top: 8px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Hover or tap definitions */
 .term {
   position: relative;
-  display: inline;
 }
 
 .term button {
@@ -265,7 +173,7 @@
   color: inherit;
   font: inherit;
   cursor: help;
-  text-decoration: underline dotted var(--accent) 1.5px;
+  text-decoration: underline dotted var(--muted);
   text-underline-offset: 3px;
 }
 
@@ -274,52 +182,28 @@
   left: 0;
   top: calc(100% + 6px);
   z-index: 15;
-  width: min(300px, 76vw);
+  width: min(280px, 76vw);
   padding: 10px 12px;
-  border-radius: 8px;
-  background: var(--code-bg);
-  color: var(--code-ink);
-  font-size: 15px;
-  line-height: 1.45;
-  box-shadow: 0 6px 20px rgb(23 32 51 / 0.2);
-}
-
-/* Dive deeper */
-.dive-open {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 44px;
-  margin: 0 0 24px;
-  padding: 10px 16px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 8px;
   background: var(--card);
-  color: var(--ink);
-  font: 500 15px/1.3 var(--sans);
-  text-align: left;
-  cursor: pointer;
+  font-size: var(--small);
+  line-height: 1.45;
 }
 
-.dive-open:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
+/* Pop-up detail */
 .dive {
-  width: min(680px, calc(100vw - 32px));
+  width: min(640px, calc(100vw - 32px));
   max-height: calc(100dvh - 48px);
   padding: 0;
   border: 0;
-  border-radius: 14px;
+  border-radius: var(--radius);
   background: var(--bg);
   color: var(--ink);
 }
 
 .dive::backdrop {
-  background: rgb(23 32 51 / 0.55);
+  background: rgb(23 32 51 / 0.5);
 }
 
 .dive-body {
@@ -328,184 +212,65 @@
 
 .dive-head {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.dive-head h2 {
-  font-size: 26px;
-}
-
-/* Checklist */
-.checklist {
-  margin: 0 0 24px;
-  padding: 20px;
-  background: var(--card);
-  border: 2px solid var(--gate);
-  border-radius: var(--radius);
-}
-
-.checklist-head {
-  display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 16px;
 }
 
-.checklist-head h2 {
-  font-size: 26px;
-}
-
-.checklist-head span {
-  color: var(--muted);
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.checklist ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.checklist label {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 9px 0;
-  cursor: pointer;
-}
-
-.checklist input {
-  flex: none;
-  width: 22px;
-  height: 22px;
-  margin: 2px 0 0;
-  accent-color: var(--done);
-  cursor: pointer;
-}
-
-.checklist-done {
-  margin-top: 10px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  background: var(--gate-tint);
-  color: var(--gate);
-  font-weight: 600;
-}
-
-/* End of a lesson */
-.recap {
-  margin-top: 40px;
-  padding: 20px 24px;
-  background: var(--tint);
-  border-radius: var(--radius);
-}
-
-.recap h2,
-.words h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.recap ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.recap li + li {
-  margin-top: 4px;
-}
-
-.words {
+/* The next step */
+.next {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin-top: 24px;
-  padding: 16px 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
 }
 
-.words h2 {
-  font-size: 17px;
+.next::after {
+  content: "→";
+  margin-left: 8px;
 }
 
-.words dl {
-  margin: 0;
+.next:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.words dl div + div {
-  margin-top: 8px;
+/* All prompts */
+.prompt-group {
+  margin-bottom: 48px;
 }
 
-.words dt {
-  display: inline;
-  font-weight: 600;
+.prompt-group > div {
+  margin-top: 24px;
 }
 
-.words dt::after {
-  content: ": ";
-}
-
-.words dd {
-  display: inline;
-  margin: 0;
-  color: var(--muted);
-}
-
-.lesson-nav {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
+.prompt-group > div > p {
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 @media (max-width: 640px) {
-  .path ol {
-    margin-bottom: 20px;
+  .lesson > h1 {
+    margin-bottom: 24px;
+    font-size: 34px;
   }
-  /* A phone cannot fit the whole path: show where you are, and the stage next. */
-  .path li:not(.now) {
-    display: none;
+  .compare {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
   }
-  .path .now::before {
-    display: none;
+  .rows div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
   }
-  .path a {
-    display: flex;
-    align-items: center;
-    min-height: 40px;
-    padding: 4px 12px;
+  .prompt figcaption {
+    padding-left: 16px;
   }
-  .path .now + li {
-    display: flex;
+  .prompt pre {
+    padding: 8px 16px 16px;
   }
-  .path .now + li::before {
-    margin-left: 4px;
-  }
-  .lesson-takeaway {
-    font-size: 17px;
-  }
-  .prompt-head {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    padding: 14px;
-  }
-  .prompt-command .prompt-head {
-    align-items: stretch;
-  }
-  .copy {
-    width: 100%;
-  }
-  .prompt-text {
-    padding: 14px;
-  }
-  .lesson-nav .btn {
-    width: 100%;
+  .house-fig {
+    padding: 12px;
   }
 }

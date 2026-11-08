@@ -11,12 +11,12 @@ A live app, a blueprint behind it, and habits that keep it healthy. They underst
 
 ## How it teaches
 - The order is the lesson: product, design and architecture come before the build.
-- Few words, a visual in most lessons, and one-click copy for anything to paste.
+- Few words, and one-click copy for anything to paste.
 - Nothing is locked. Start anywhere.
-- Progress is saved on the device with no account. A lesson counts as done when the student reaches its end and has spent about a quarter of the reading time on it (at least 8 seconds). The Next button also marks it done.
+- Progress is saved on the device with no account. A lesson counts as done when the student reaches its end and has stayed at least 8 seconds. Next also marks it done.
 
 ## Pages
-Landing, All lessons, a lesson, All prompts.
+Landing, a lesson, All prompts.
 
 ## Not doing
 Quizzes, final exams, streaks, accounts.
